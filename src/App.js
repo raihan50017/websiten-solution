@@ -4,6 +4,9 @@ import Platform from "./components/pages/platform/Platform";
 import AboutUs from "./components/pages/aboutUs/AboutUs";
 import Registration from "./components/pages/registration/Registration";
 import RegisterNewCustomer from "./components/pages/registration/RegisterNewCustomer";
+import TutorRegistrationForm from "./components/pages/registration/TutorRegistrationForm";
+import StudentRegistrationForm from "./components/pages/registration/StudentRegistrationForm";
+import DashboardQuotasPerCoach from "./components/dashboard/DashboardQuotasPerCoach";
 
 function App() {
   return (
@@ -23,6 +26,15 @@ function App() {
         </Route>
         <Route exact path="/new-registration">
           <RegisterNewCustomer></RegisterNewCustomer>
+        </Route>
+        <Route exact path="/tutor-registration">
+          <TutorRegistrationForm></TutorRegistrationForm>
+        </Route>
+        <Route exact path="/student-registration">
+          <StudentRegistrationForm></StudentRegistrationForm>
+        </Route>
+        <Route exact path="/dashboard-quotas">
+          <DashboardQuotasPerCoach></DashboardQuotasPerCoach>
         </Route>
       </Router>
     </div>

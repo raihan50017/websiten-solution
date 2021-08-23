@@ -14,7 +14,7 @@ const styles = makeStyles((theme) => ({
     borderBottom: "1px solid gray",
     color: "#6A737B",
   },
-  welcomeHeading: {
+  pageHeading: {
     padding: "20px 30px",
     color: "#6A737B",
   },
@@ -24,18 +24,20 @@ const styles = makeStyles((theme) => ({
     fontSize: "18px",
     padding: "20px 20px",
   },
-  loginOrRegistrationFormContainer: {
+  createAccountContainer: {
     padding: "20px 40px",
   },
-  login: {
+  createAccountAsTutor: {
     padding: "0px 20px",
   },
-  userIcon: {
-    backgroundColor: "#6A737BD9",
-    textAlign: "center",
-    padding: "30px 10px",
+  createAccountCard: {
+    border: "1px solid #6A737BD9",
   },
-  newRegistration: {
+  iconContainer: {
+    backgroundColor: "#6A737BD9",
+    padding: "10px 10px",
+  },
+  createAccountAsStudent: {
     padding: "0px 20px",
   },
   loginHeading: {
@@ -65,6 +67,9 @@ const styles = makeStyles((theme) => ({
     backgroundColor: "#6A737BD9",
     marginTop: "25px",
     padding: "10px 10px",
+    position: "fixed",
+    bottom: "0",
+    width: "100%",
     "& p": {
       fontWeight: "400",
       fontSize: "16px",
@@ -99,7 +104,7 @@ const RegisterNewCustomer = () => {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          className={classes.welcomeHeading}
+          className={classes.pageHeading}
         >
           <Box>
             <Typography variant="h4">Create user account</Typography>
@@ -113,81 +118,73 @@ const RegisterNewCustomer = () => {
         </Typography>
       </Box>
       <Box>
-        <Grid container className={classes.loginOrRegistrationFormContainer}>
-          <Grid className={classes.login} md={6}>
-            <Box className={classes.userIcon}>
-              <img
-                style={{ width: "60px" }}
-                alt=""
-                src="../../images/user.svg"
-              ></img>
-            </Box>
-            <Box className={classes.loginHeading}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                I am already a customer
-              </Typography>
-            </Box>
-            <Box>
-              <TextField
-                style={{ marginBottom: "10px" }}
-                id="standard-full-width"
-                fullWidth
-                label="Email"
-              />
-              <TextField
-                style={{ marginBottom: "10px" }}
-                type="password"
-                id="standard-full-width"
-                fullWidth
-                label="Password"
-              />
-            </Box>
-            <Box>
+        <Grid container className={classes.createAccountContainer}>
+          <Grid className={classes.createAccountAsTutor} md={6}>
+            <Box className={classes.createAccountCard}>
               <Grid
-                style={{ marginTop: "40px" }}
                 container
                 direction="row"
+                justifyContent="space-between"
                 alignItems="center"
               >
-                <Grid xs={6}>
-                  <Button variant="contained">Login</Button>
-                </Grid>
-                <Grid xs={6}>Password forgotten?</Grid>
+                <Box className={classes.iconContainer}>
+                  <img
+                    style={{ height: "80px" }}
+                    alt=""
+                    src="../../images/teaching2.svg"
+                  ></img>
+                </Box>
+                <Typography variantMapping={{ p: "p" }} variant="p">
+                  I am a
+                </Typography>
+                <Button style={{ marginRight: "15px" }} variant="contained">
+                  Tutor
+                </Button>
               </Grid>
+            </Box>
+            <Box>
+              <Typography
+                style={{ textAlign: "center", padding: "40px 20px" }}
+                variantMapping={{ p: "p" }}
+                variant="p"
+              >
+                Teach, learn and apply
+              </Typography>
             </Box>
           </Grid>
-          <Grid className={classes.newRegistration} md={6}>
-            <Box className={classes.userIcon}>
-              <img
-                style={{ width: "60px" }}
-                alt=""
-                src="../../images/userplus.svg"
-              ></img>
-            </Box>
-            <Box className={classes.regHeading}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                I am new here?
-              </Typography>
-            </Box>
-            <Box className={classes.registerDescription}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                Enjoy your individual place on our platform. Whether you are a
-                student or a tutor, all documents are digitally accessible 24/7,
-                customisable.
-              </Typography>
-            </Box>
-            <Box>
+          <Grid className={classes.createAccountAsStudent} md={6}>
+            <Box className={classes.createAccountCard}>
               <Grid
                 container
                 direction="row"
-                justifyContent="center"
+                justifyContent="space-between"
                 alignItems="center"
-                className={classes.registerButton}
               >
-                <Box>
-                  <Button variant="contained">Register Now</Button>
+                <Box className={classes.iconContainer}>
+                  <img
+                    style={{ height: "80px" }}
+                    alt=""
+                    src="../../images/graduate.svg"
+                  ></img>
                 </Box>
+                <Typography variantMapping={{ p: "p" }} variant="p">
+                  I am a
+                </Typography>
+                <Button style={{ marginRight: "15px" }} variant="contained">
+                  Student
+                </Button>
               </Grid>
+            </Box>
+            <Box>
+              <Typography
+                style={{ textAlign: "center", padding: "40px 20px" }}
+                variantMapping={{ p: "p" }}
+                variant="p"
+              >
+                Students today are used to working online on almost everything
+                they do. The FliMoDi platform offers this rich collaborative
+                experience.
+              </Typography>
             </Box>
           </Grid>
         </Grid>
