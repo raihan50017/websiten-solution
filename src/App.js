@@ -7,6 +7,9 @@ import RegisterNewCustomer from "./components/pages/registration/RegisterNewCust
 import TutorRegistrationForm from "./components/pages/registration/TutorRegistrationForm";
 import StudentRegistrationForm from "./components/pages/registration/StudentRegistrationForm";
 import DashboardQuotasPerCoach from "./components/dashboard/DashboardQuotasPerCoach";
+import TutorService from "./components/pages/tutorService/TutorService";
+import SetupPlatform from "./components/pages/tutorService/SetupPlatform";
+import EditUserAccount from "./components/pages/editing/EditUserAccount";
 
 function App() {
   return (
@@ -35,6 +38,15 @@ function App() {
         </Route>
         <Route exact path="/dashboard-quotas">
           <DashboardQuotasPerCoach></DashboardQuotasPerCoach>
+        </Route>
+        <Route exact path="/tutor-service">
+          <TutorService></TutorService>
+        </Route>
+        <Route exact path="/setup-platform">
+          <SetupPlatform></SetupPlatform>
+        </Route>
+        <Route exact path="/edit-user">
+          <EditUserAccount></EditUserAccount>
         </Route>
       </Router>
     </div>
