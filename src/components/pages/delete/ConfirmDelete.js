@@ -20,7 +20,6 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { useDropzone } from "react-dropzone";
 import EditIcon from "@material-ui/icons/Edit";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -54,27 +53,7 @@ const styles = makeStyles((theme) => ({
       textAlign: "center",
     },
   },
-  linechartContainer: {
-    padding: "15px",
-    backgroundColor: "#6A737B4F",
-  },
-  card: {
-    width: "50%",
-    textAlign: "center",
-    marginLeft: "auto",
-    border: "1px solid rgba(0,0,0,.1)",
-    height: "100%",
-    padding: "20px 15px",
-    "& h6": {
-      marginTop: "20px",
-      marginBottom: "20px",
-    },
-    "& p": {
-      marginBottom: "20px",
-      fontSize: "16px",
-      fontWeight: "400",
-    },
-  },
+
   backArrow: {
     display: "flex",
     alignItems: "center",
@@ -84,26 +63,15 @@ const styles = makeStyles((theme) => ({
       fontSize: "20px",
     },
   },
-  logoUpload: {
-    display: "flex",
-    alignItems: "center",
-    border: "1px solid gray",
-    padding: "10px",
-    width: "auto",
-
-    "& .MuiSvgIcon-root": {
-      color: "#D24D57",
-      marginLeft: "8px",
-    },
+  formControl: {
+    width: "100%",
   },
-  editItemCard: {
-    border: "1px solid rgba(0,0,0,.2)",
-    padding: "20px",
-    marginBottom: "20px",
+  padding10: {
+    padding: "10px 10px",
   },
 }));
 
-const EditUserAccount = () => {
+const ConfirmDelete = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -153,7 +121,7 @@ const EditUserAccount = () => {
           <Grid xs={4}>
             <Box>
               <Typography style={{ textAlign: "center" }} variant="h5">
-                Edit user account
+                Delete account
               </Typography>
             </Box>
           </Grid>
@@ -230,104 +198,52 @@ const EditUserAccount = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          className={classes.pageHeading}
-        >
-          <Box>
-            <Typography variant="h4">first and last name of tutor</Typography>
-          </Box>
-        </Grid>
-      </Box>
       <Box className={classes.container}>
-        <Grid
-          className={classes.editItemCard}
-          container
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Box>
-            <Grid container alignItems="center">
-              <img
-                style={{ height: "80px" }}
-                alt=""
-                src="../../images/user.svg"
-              ></img>
-              <Box>
-                <Typography variant="h6">Edit profile</Typography>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  company details, website, bio
-                </Typography>
-              </Box>
-            </Grid>
+        <Box>
+          <Box className={classes.padding10}>
+            <img
+              style={{ height: "50px" }}
+              alt=""
+              src="../../images/delete.svg"
+            ></img>
           </Box>
-          <Box>
-            <Button variant="outlined" color="primary">
-              Customize
+          <Box className={classes.padding10}>
+            <Typography variant="h6">
+              Request account closure and data deletion
+            </Typography>
+            <Typography variant="body1">
+              You may submit a request to permanently close your account and
+              delete your personal data.<br></br> To send a request to close
+              your account and delete your personal data: <br></br>1. go to
+              Close your account.<br></br> 2. Sign in to the account you want to
+              close.<br></br> 3. review the products and services associated
+              with your account.<br></br> 4. If you still want to proceed,
+              select a reason from the drop-down menu, check the box next to
+              Yes, I want to close my account permanently and delete my data,
+              and click Close My Account.<br></br> <br></br>A confirmation
+              notification will be sent to the email address associated with
+              your account or via SMS. You must respond within 5 days to verify
+              your request.<br></br>
+              <br></br> <strong>Note: </strong>
+              Once your account is closed, it is no longer accessible to you or
+              anyone else and cannot be restored. If you later decide you want
+              to order from us again or use website features that require a
+              customer account, you will need to create a new account. To learn
+              more, visit What happens if I close my account?
+            </Typography>
+          </Box>
+          <Grid
+            container
+            direction="row"
+            justifyContent="flex-end"
+            alignItems="center"
+            className={classes.padding10}
+          >
+            <Button color="primary" variant="contained">
+              go to close your account
             </Button>
-          </Box>
-        </Grid>
-        <Grid
-          className={classes.editItemCard}
-          container
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Box>
-            <Grid container alignItems="center">
-              <img
-                style={{ height: "80px", marginRight: "10px" }}
-                alt=""
-                src="../../images/change-payment-info.svg"
-              ></img>
-              <Box>
-                <Typography variant="h6">
-                  Change payment information{" "}
-                </Typography>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  Credit card, IBAN, SEPA direct debit
-                </Typography>
-              </Box>
-            </Grid>
-          </Box>
-          <Box>
-            <Button variant="outlined" color="primary">
-              Customize
-            </Button>
-          </Box>
-        </Grid>
-        <Grid
-          className={classes.editItemCard}
-          container
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Box>
-            <Grid container alignItems="center">
-              <img
-                style={{ height: "80px", marginRight: "10px" }}
-                alt=""
-                src="../../images/change-password.svg"
-              ></img>
-              <Box>
-                <Typography variant="h6">Change password</Typography>
-                <Typography
-                  variantMapping={{ p: "p" }}
-                  variant="p"
-                ></Typography>
-              </Box>
-            </Grid>
-          </Box>
-          <Box>
-            <Button variant="outlined" color="primary">
-              Customize
-            </Button>
-          </Box>
-        </Grid>
+          </Grid>
+        </Box>
         <Grid
           style={{ marginTop: "50px" }}
           container
@@ -363,4 +279,4 @@ const EditUserAccount = () => {
   );
 };
 
-export default EditUserAccount;
+export default ConfirmDelete;

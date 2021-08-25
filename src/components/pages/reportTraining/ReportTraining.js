@@ -20,7 +20,6 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { useDropzone } from "react-dropzone";
 import EditIcon from "@material-ui/icons/Edit";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -47,6 +46,7 @@ const styles = makeStyles((theme) => ({
     marginTop: "25px",
     padding: "10px 10px",
     bottom: "0",
+    position: "fixed",
     width: "100%",
     "& p": {
       fontWeight: "400",
@@ -54,27 +54,7 @@ const styles = makeStyles((theme) => ({
       textAlign: "center",
     },
   },
-  linechartContainer: {
-    padding: "15px",
-    backgroundColor: "#6A737B4F",
-  },
-  card: {
-    width: "50%",
-    textAlign: "center",
-    marginLeft: "auto",
-    border: "1px solid rgba(0,0,0,.1)",
-    height: "100%",
-    padding: "20px 15px",
-    "& h6": {
-      marginTop: "20px",
-      marginBottom: "20px",
-    },
-    "& p": {
-      marginBottom: "20px",
-      fontSize: "16px",
-      fontWeight: "400",
-    },
-  },
+
   backArrow: {
     display: "flex",
     alignItems: "center",
@@ -84,31 +64,26 @@ const styles = makeStyles((theme) => ({
       fontSize: "20px",
     },
   },
-  logoUpload: {
-    display: "flex",
-    alignItems: "center",
-    border: "1px solid gray",
-    padding: "10px",
-    width: "auto",
-
-    "& .MuiSvgIcon-root": {
-      color: "#D24D57",
-      marginLeft: "8px",
-    },
+  formControl: {
+    width: "100%",
   },
-  editItemCard: {
-    border: "1px solid rgba(0,0,0,.2)",
-    padding: "20px",
-    marginBottom: "20px",
+  padding10: {
+    padding: "10px 10px",
   },
 }));
 
-const EditUserAccount = () => {
+const ReportTraining = () => {
   const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const anchorRef2 = React.useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleToggle2 = () => {
+    setOpen2((prevOpen) => !prevOpen);
   };
 
   const handleClose = (event) => {
@@ -117,6 +92,14 @@ const EditUserAccount = () => {
     }
 
     setOpen(false);
+  };
+
+  const handleClose2 = (event) => {
+    if (anchorRef2.current && anchorRef2.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen2(false);
   };
 
   const StyledMenuItem = withStyles((theme) => ({
@@ -153,7 +136,7 @@ const EditUserAccount = () => {
           <Grid xs={4}>
             <Box>
               <Typography style={{ textAlign: "center" }} variant="h5">
-                Edit user account
+                Change password
               </Typography>
             </Box>
           </Grid>
@@ -239,95 +222,113 @@ const EditUserAccount = () => {
           className={classes.pageHeading}
         >
           <Box>
-            <Typography variant="h4">first and last name of tutor</Typography>
+            <Typography variant="h4">Reporting trainings</Typography>
           </Box>
         </Grid>
       </Box>
       <Box className={classes.container}>
-        <Grid
-          className={classes.editItemCard}
-          container
-          alignItems="center"
-          justifyContent="space-between"
-        >
+        <Grid container>
           <Box>
-            <Grid container alignItems="center">
-              <img
-                style={{ height: "80px" }}
-                alt=""
-                src="../../images/user.svg"
-              ></img>
-              <Box>
-                <Typography variant="h6">Edit profile</Typography>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  company details, website, bio
+            <Grid container wrap="nowrap" alignItems="flex-start">
+              <Box className={classes.padding10}>
+                <img
+                  style={{ width: "60px" }}
+                  alt=""
+                  src="../../images/classlecture.svg"
+                ></img>
+              </Box>
+              <Box style={{ paddingTop: "5px" }}>
+                <Typography style={{ marginBottom: "10px" }} variant="h6">
+                  Evaluation of the trainings
                 </Typography>
+                <Box>
+                  {" "}
+                  <TextField
+                    id="outlined-basic"
+                    label=""
+                    variant="outlined"
+                    className={classes.formControl}
+                    type="text"
+                  />
+                </Box>
               </Box>
             </Grid>
           </Box>
           <Box>
-            <Button variant="outlined" color="primary">
-              Customize
-            </Button>
+            <div>
+              <Typography
+                ref={anchorRef2}
+                aria-controls={open2 ? "menu-list-grow-2" : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle2}
+                style={{
+                  margin: "12px 30px",
+                  border: "1px solid gray",
+                  padding: "8px 10px",
+                  cursor: "pointer",
+                }}
+              >
+                account details
+                <ExpandMoreIcon
+                  style={{ verticalAlign: "middle" }}
+                ></ExpandMoreIcon>
+              </Typography>
+              <Popper
+                open={open2}
+                anchorEl={anchorRef2.current}
+                role={undefined}
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === "bottom" ? "center top" : "center bottom",
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClose2}>
+                        <MenuList
+                          autoFocusItem={open}
+                          id="menu-list-grow-2"
+                          onKeyDown={handleListKeyDown}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            {" "}
+                            edit account details
+                          </MenuItem>
+                          <MenuItem onClick={handleClose}>
+                            show activities
+                          </MenuItem>
+                          <MenuItem onClick={handleClose}>
+                            {" "}
+                            delete account
+                          </MenuItem>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
+            </div>
           </Box>
         </Grid>
-        <Grid
-          className={classes.editItemCard}
-          container
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Box>
-            <Grid container alignItems="center">
-              <img
-                style={{ height: "80px", marginRight: "10px" }}
-                alt=""
-                src="../../images/change-payment-info.svg"
-              ></img>
-              <Box>
-                <Typography variant="h6">
-                  Change payment information{" "}
-                </Typography>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  Credit card, IBAN, SEPA direct debit
-                </Typography>
-              </Box>
-            </Grid>
-          </Box>
-          <Box>
-            <Button variant="outlined" color="primary">
-              Customize
+        <Box>
+          <Grid
+            container
+            direction="row"
+            justifyContent="flex-start"
+            alignItems="center"
+            className={classes.padding10}
+            style={{ marginTop: "40px" }}
+          >
+            <Button color="primary" variant="contained">
+              + Add CHART
             </Button>
-          </Box>
-        </Grid>
-        <Grid
-          className={classes.editItemCard}
-          container
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Box>
-            <Grid container alignItems="center">
-              <img
-                style={{ height: "80px", marginRight: "10px" }}
-                alt=""
-                src="../../images/change-password.svg"
-              ></img>
-              <Box>
-                <Typography variant="h6">Change password</Typography>
-                <Typography
-                  variantMapping={{ p: "p" }}
-                  variant="p"
-                ></Typography>
-              </Box>
-            </Grid>
-          </Box>
-          <Box>
-            <Button variant="outlined" color="primary">
-              Customize
-            </Button>
-          </Box>
-        </Grid>
+          </Grid>
+        </Box>
         <Grid
           style={{ marginTop: "50px" }}
           container
@@ -363,4 +364,4 @@ const EditUserAccount = () => {
   );
 };
 
-export default EditUserAccount;
+export default ReportTraining;
