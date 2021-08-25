@@ -18,8 +18,9 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 
 const styles = makeStyles((theme) => ({
   footerSection: {
-    borderTop: "2px solid #6A737BD9",
+    borderTop: "1px solid #6A737BD9",
     padding: "30px 40px",
+    backgroundColor: "rgba(0,0,0,.04)",
     textAlign: "center",
     "& p": {
       fontSize: "17px",
@@ -110,7 +111,6 @@ const Footer = () => {
             <Box>
               <IconButton
                 style={{
-                  border: "1px solid  rgba(0,0,0,.5)",
                   padding: "5px",
                   margin: "4px",
                 }}
@@ -119,7 +119,6 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 style={{
-                  border: "1px solid  rgba(0,0,0,.5)",
                   padding: "5px",
                   margin: "4px",
                 }}
@@ -128,7 +127,6 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 style={{
-                  border: "1px solid  rgba(0,0,0,.5)",
                   padding: "5px",
                   margin: "4px",
                 }}
@@ -137,7 +135,6 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 style={{
-                  border: "1px solid rgba(0,0,0,.5)",
                   padding: "5px",
                   margin: "4px",
                 }}
@@ -146,7 +143,6 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 style={{
-                  border: "1px solid  rgba(0,0,0,.5)",
                   padding: "5px",
                   margin: "4px",
                 }}

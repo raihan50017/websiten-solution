@@ -10,16 +10,22 @@ const styles = makeStyles((theme) => ({
     paddingLeft: "20px",
     paddingRight: "20px",
     paddingBottom: "30px",
-    backgroundColor: "#6A737BD9",
+    // backgroundColor: "#6A737BD9",
+    backgroundColor: "#000000",
+    backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    color: "white",
   },
   presentation: {
     alignItems: "center",
   },
   digitalScalability: {
-    padding: "40px 0px",
+    padding: "40px 20px",
   },
   partnershipSectionLeft: {
-    backgroundColor: "#6A737BD9",
+    // backgroundColor: "#6A737BD9",
+    backgroundColor: "#000000",
+    backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    color: "white",
     padding: "20px 40px",
     textAlign: "center",
   },
@@ -34,6 +40,7 @@ const Home = () => {
   return (
     <div>
       <Header></Header>
+      <Box m={2}></Box>
       <Box container className={classes.presentionBanner}>
         <Grid className={classes.presentation} container>
           <Grid style={{ textAlign: "right" }} md={2}>
@@ -104,7 +111,7 @@ const Home = () => {
             <YouTube
               onReady={(event) => event.target.pauseVideo()}
               opts={{
-                playerVars: { autoplay: 1 },
+                playerVars: { autoplay: 0 },
                 width: "100%",
               }}
               videoId="090SqsRCbaI"
