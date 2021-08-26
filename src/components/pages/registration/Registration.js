@@ -7,6 +7,8 @@ import {
   Button,
 } from "@material-ui/core";
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = makeStyles((theme) => ({
   registrationHeading: {
@@ -19,10 +21,11 @@ const styles = makeStyles((theme) => ({
     color: "#6A737B",
   },
   loginOrRegistrationFormContainer: {
-    padding: "20px 40px",
+    padding: "20px 20%",
   },
   login: {
     padding: "0px 20px",
+    marginBottom: "15px",
   },
   userIcon: {
     backgroundColor: "#6A737BD9",
@@ -31,6 +34,7 @@ const styles = makeStyles((theme) => ({
   },
   newRegistration: {
     padding: "0px 20px",
+    marginBottom: "15px",
   },
   loginHeading: {
     textAlign: "center",
@@ -55,14 +59,24 @@ const styles = makeStyles((theme) => ({
   registerButton: {
     paddingTop: "30px",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    marginTop: "25px",
-    padding: "10px 10px",
+    padding: "20px 40px",
+    marginTop: "40px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
 }));
@@ -171,26 +185,48 @@ const Registration = () => {
                 className={classes.registerButton}
               >
                 <Box>
-                  <Button variant="contained">Register Now</Button>
+                  <RouterLink
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    to="/new-registration"
+                  >
+                    <Button variant="contained">Register Now</Button>
+                  </RouterLink>
                 </Box>
               </Grid>
             </Box>
           </Grid>
         </Grid>
+        <Grid
+          style={{ margin: "40px" }}
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          className={classes.createAccountContainer}
+        >
+          <RouterLink
+            to="/"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <box className={classes.backArrow}>
+              <ArrowBackIcon></ArrowBackIcon>
+              <Typography variant="body1">Back</Typography>
+            </box>
+          </RouterLink>
+        </Grid>
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>

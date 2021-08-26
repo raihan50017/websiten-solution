@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
       borderTop: "1px solid #eaeaea",
       "&:hover": {
         backgroundColor: "#ddd",
-        color: "black",
+        color: "blue",
       },
     },
   },
@@ -337,10 +337,25 @@ export default function Header(props) {
             </Typography>
             <Box className={`${dropDownContent} dropdown-content`}>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                Banking Solution
+                <RouterLink style={{ border: "none", padding: "0" }} to="/">
+                  Home
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                Mobile App Development
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/registration"
+                >
+                  Registration
+                </RouterLink>
+              </Typography>
+              <Typography variantMapping={{ a: "a" }} variant="a">
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/dashboard-quotas"
+                >
+                  Dashboard Quotas
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
                 E-commerce Solution
@@ -369,22 +384,76 @@ export default function Header(props) {
             </Typography>
             <Box className={`${dropDownContent} dropdown-content`}>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                Fintech
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/platform"
+                >
+                  Platform
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                Telecom
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/tutor-service"
+                >
+                  Tutor Service
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                Education
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/setup-platform"
+                >
+                  Setup Platform
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                Halthcare
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/edit-user"
+                >
+                  Edit User
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                E-commerce
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/change-payment-info"
+                >
+                  Change Payment Info
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                Startup
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/profile-setting"
+                >
+                  Update Profile
+                </RouterLink>
+              </Typography>
+              <Typography variantMapping={{ a: "a" }} variant="a">
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/change-password"
+                >
+                  Change Password
+                </RouterLink>
+              </Typography>
+              <Typography variantMapping={{ a: "a" }} variant="a">
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/delete-account"
+                >
+                  Delete Account
+                </RouterLink>
+              </Typography>
+              <Typography variantMapping={{ a: "a" }} variant="a">
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/report-training"
+                >
+                  Report Training
+                </RouterLink>
               </Typography>
             </Box>
           </Box>
@@ -401,7 +470,12 @@ export default function Header(props) {
             </Typography>
             <Box className={`${dropDownContent} dropdown-content`}>
               <Typography variantMapping={{ a: "a" }} variant="a">
-                About Us
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/about-us"
+                >
+                  About Us
+                </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
                 Our Partners
@@ -568,8 +642,47 @@ export default function Header(props) {
                       autoFocusItem={open}
                       id="menu-list-grow"
                     >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <RouterLink
+                          style={{
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
+                          to="/"
+                        >
+                          Home
+                        </RouterLink>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <RouterLink
+                          style={{
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
+                          to="/registration"
+                        >
+                          Registration
+                        </RouterLink>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/dashboard-quotas"
+                          >
+                            Dashboard Quotas
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
@@ -616,9 +729,139 @@ export default function Header(props) {
                       autoFocusItem={open2}
                       id="menu-list-grow2"
                     >
-                      <MenuItem onClick={handleClose2}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose2}>My account</MenuItem>
-                      <MenuItem onClick={handleClose2}>Logout</MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <RouterLink
+                          style={{
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
+                          to="/platform"
+                        >
+                          Platform
+                        </RouterLink>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/tutor-service"
+                          >
+                            Tutor Service
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/setup-platform"
+                          >
+                            Setup Platform
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/edit-user"
+                          >
+                            Edit User
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/change-payment-info"
+                          >
+                            Change Payment Info
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/profile-setting"
+                          >
+                            Update Profile
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/change-password"
+                          >
+                            Change Password
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/delete-account"
+                          >
+                            Delete Account
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        <Typography variantMapping={{ a: "a" }} variant="a">
+                          <RouterLink
+                            style={{
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              color: "inherit",
+                            }}
+                            to="/report-training"
+                          >
+                            Report Training
+                          </RouterLink>
+                        </Typography>
+                      </MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
@@ -664,6 +907,19 @@ export default function Header(props) {
                       autoFocusItem={open3}
                       id="menu-list-grow3"
                     >
+                      <MenuItem onClick={handleClose}>
+                        <RouterLink
+                          style={{
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
+                          to="/about-us"
+                        >
+                          About Us
+                        </RouterLink>
+                      </MenuItem>
                       <MenuItem onClick={handleClose3}>Profile</MenuItem>
                       <MenuItem onClick={handleClose3}>My account</MenuItem>
                       <MenuItem onClick={handleClose3}>Logout</MenuItem>

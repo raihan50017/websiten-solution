@@ -37,9 +37,19 @@ const styles = makeStyles((theme) => ({
   },
   footerContact: {
     padding: "0px 0px",
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "flex-start",
+    },
   },
   ourPrivacy: {
     padding: "10px 0px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    display: "inline-block",
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+      paddingLeft: "0",
+    },
     "& ul": {
       listStyleType: "none",
       padding: "0px",
@@ -48,20 +58,29 @@ const styles = makeStyles((theme) => ({
       fontWeight: "400",
       "& li": {
         display: "inline-block",
-        paddingLeft: "10px",
+        marginLeft: "13px",
+        transition: "all .3s ease",
+        cursor: "pointer",
+        borderBottom: "1px solid transparent",
+        "&:hover": {
+          color: "gray",
+          borderBottom: "1px solid black",
+        },
         [theme.breakpoints.down("md")]: {
           display: "block",
+          marginLeft: "0px",
         },
       },
     },
   },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    padding: "10px 10px",
+    padding: "20px 40px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
 }));
@@ -81,7 +100,7 @@ const Footer = () => {
           alignItems="center"
           className={classes.subscribeForm}
         >
-          <Box style={{ width: "50%" }}>
+          <Box style={{ width: "100%" }}>
             <FormControl
               fullWidth
               className={classes.margin}
@@ -101,7 +120,7 @@ const Footer = () => {
           <Grid
             container
             direction="row"
-            justifyContent="flex-end"
+            justifyContent="center"
             alignItems="center"
             className={classes.footerContact}
           >
@@ -174,17 +193,17 @@ const Footer = () => {
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>

@@ -1,36 +1,45 @@
 import React from "react";
 import Header from "../../shared/header/Header";
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Box, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 import YouTube from "react-youtube";
 import Footer from "../../shared/footer/Footer";
 
 const styles = makeStyles((theme) => ({
   presentionBanner: {
-    paddingTop: "70px",
+    paddingTop: "170px",
     paddingLeft: "20px",
     paddingRight: "20px",
-    paddingBottom: "30px",
-    // backgroundColor: "#6A737BD9",
-    backgroundColor: "#000000",
-    backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
-    color: "white",
+    paddingBottom: "130px",
+    backgroundColor: "#6A737BD9",
+    // backgroundColor: "#000000",
+    // backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    // color: "white",
   },
-  presentation: {
-    alignItems: "center",
-  },
+  presentation: {},
   digitalScalability: {
+    marginTop: "30px",
     padding: "40px 20px",
   },
   partnershipSectionLeft: {
-    // backgroundColor: "#6A737BD9",
-    backgroundColor: "#000000",
-    backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
-    color: "white",
-    padding: "20px 40px",
+    backgroundColor: "#6A737BD9",
+    // backgroundColor: "#000000",
+    // backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    // color: "white",
+    padding: "120px 40px",
     textAlign: "center",
   },
   whatMakesHeading: {
-    padding: "40px 0px",
+    marginTop: "30px",
+    padding: "40px 30px",
+  },
+  youtube: {
+    transition: "all .3s ease",
+    width: "50%",
+    marginBottom: "40px",
+    boxShadow: "2px 2px 4px 4px rgba(0,0,0,.2)",
+    "&:hover": {
+      boxShadow: "2px 2px 4px 4px rgba(0,0,0,.3)",
+    },
   },
 }));
 
@@ -43,9 +52,14 @@ const Home = () => {
       <Box m={2}></Box>
       <Box container className={classes.presentionBanner}>
         <Grid className={classes.presentation} container>
-          <Grid style={{ textAlign: "right" }} md={2}>
+          <Grid
+            style={{
+              textAlign: "right",
+            }}
+            md={2}
+          >
             <img
-              style={{ width: "120px", padding: "0px 10px" }}
+              style={{ width: "140px", padding: "0px 10px" }}
               alt=""
               src="../../images/presentation.svg"
             ></img>
@@ -77,7 +91,7 @@ const Home = () => {
             <Box>
               <img
                 style={{
-                  width: "110px",
+                  width: "130px",
                   marginLeft: "auto",
                   marginRight: "auto",
                 }}
@@ -107,7 +121,7 @@ const Home = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Box style={{ width: "50%" }}>
+          <Box className={classes.youtube}>
             <YouTube
               onReady={(event) => event.target.pauseVideo()}
               opts={{
@@ -116,7 +130,6 @@ const Home = () => {
               }}
               videoId="090SqsRCbaI"
             />
-            ;
           </Box>
         </Grid>
       </Box>

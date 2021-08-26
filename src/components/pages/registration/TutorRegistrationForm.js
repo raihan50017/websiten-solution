@@ -11,6 +11,8 @@ import {
   Select,
 } from "@material-ui/core";
 import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = makeStyles((theme) => ({
   registrationHeading: {
@@ -28,8 +30,13 @@ const styles = makeStyles((theme) => ({
     fontSize: "18px",
     padding: "20px 20px",
   },
+  tutorImg: {
+    [theme.breakpoints.down("md")]: {
+      width: "50%",
+    },
+  },
   createAccountContainer: {
-    padding: "20px 40px",
+    padding: "20px 5%",
   },
   createAccountAsTutor: {
     padding: "0px 20px",
@@ -67,17 +74,24 @@ const styles = makeStyles((theme) => ({
   registerButton: {
     paddingTop: "30px",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    marginTop: "25px",
-    padding: "10px 10px",
-    position: "fixed",
-    bottom: "0",
-    width: "100%",
+    padding: "20px 40px",
+    marginTop: "130px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
   formControl: {
@@ -127,20 +141,23 @@ const TutorRegistrationForm = () => {
           </Box>
         </Grid>
       </Box>
-      <Box className={classes.headerDescription}>
-        <Typography variantMapping={{ p: "p" }} variant="p">
-          I order for us to set up your personal account, we only need your
-          contact details. We will not pass this data on to third parties.
-        </Typography>
-      </Box>
       <Box>
         <Grid container className={classes.createAccountContainer}>
           <Grid className={classes.createAccountAsTutor} md={2}>
-            <Box style={{ paddingTop: "10px", paddingBottom: "10px" }}>
-              <Grid container justifyContent="flex-end">
-                <Box className={classes.iconContainer}>
+            <Box
+              style={{
+                paddingTop: "10px",
+                paddingBottom: "10px",
+                width: "100%",
+              }}
+            >
+              <Grid style={{ width: "100%" }} container justifyContent="flex-end">
+                <Box
+                  style={{ width: "100px" }}
+                  className={classes.iconContainer}
+                >
                   <img
-                    style={{ height: "80px" }}
+                    className={classes.tutorImg}
                     alt=""
                     src="../../images/teaching2.svg"
                   ></img>
@@ -148,7 +165,7 @@ const TutorRegistrationForm = () => {
               </Grid>
             </Box>
           </Grid>
-          <Grid md={10}>
+          <Grid xs={12} md={10}>
             <Box>
               <Box>
                 <Typography
@@ -163,7 +180,7 @@ const TutorRegistrationForm = () => {
                 </Typography>
               </Box>
               <Grid container>
-                <Grid xs={4} className={classes.padding10}>
+                <Grid xs={12} md={4} className={classes.padding10}>
                   <FormControl
                     variant="outlined"
                     className={classes.formControl}
@@ -187,7 +204,7 @@ const TutorRegistrationForm = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid xs={4} className={classes.padding10}>
+                <Grid xs={12} md={4} className={classes.padding10}>
                   <TextField
                     id="outlined-basic"
                     label="Firstname"
@@ -196,7 +213,7 @@ const TutorRegistrationForm = () => {
                     required
                   />
                 </Grid>
-                <Grid xs={4} className={classes.padding10}>
+                <Grid xs={12} md={4} className={classes.padding10}>
                   <TextField
                     id="outlined-basic"
                     label="Lastname"
@@ -259,20 +276,37 @@ const TutorRegistrationForm = () => {
             </Box>
           </Grid>
         </Grid>
+        <Grid
+          style={{ marginTop: "0px" }}
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          className={classes.createAccountContainer}
+        >
+          <RouterLink
+            to="/new-registration"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <box className={classes.backArrow}>
+              <ArrowBackIcon></ArrowBackIcon>
+              <Typography variant="body1">Back</Typography>
+            </box>
+          </RouterLink>
+        </Grid>
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>

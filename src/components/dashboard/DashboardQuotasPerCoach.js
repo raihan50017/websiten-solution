@@ -11,6 +11,8 @@ import {
   Select,
 } from "@material-ui/core";
 import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -25,17 +27,24 @@ const styles = makeStyles((theme) => ({
     padding: "20px 30px",
     color: "#6A737B",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    marginTop: "25px",
-    padding: "10px 10px",
-    position: "fixed",
-    bottom: "0",
-    width: "100%",
+    padding: "20px 40px",
+    marginTop: "130px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
   linechartContainer: {
@@ -81,7 +90,12 @@ const DashboardQuotasPerCoach = () => {
         <Grid container>
           <Grid md={6}>
             <Box>
-              <Grid container>
+              <Grid
+                container
+                style={{ marginBottom: "20px" }}
+                wrap="nowrap"
+                justifyContent="center"
+              >
                 <Box className={classes.linechartContainer}>
                   <img
                     style={{ width: "50px" }}
@@ -106,7 +120,12 @@ const DashboardQuotasPerCoach = () => {
           </Grid>
           <Grid md={6}>
             <Box>
-              <Grid container>
+              <Grid
+                container
+                wrap="nowrap"
+                justifyContent="center"
+                style={{ marginBottom: "20px" }}
+              >
                 <Box>
                   <img
                     style={{ width: "90px" }}
@@ -142,7 +161,12 @@ const DashboardQuotasPerCoach = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid container justifyContent="center" style={{ padding: "40px" }}>
+        <Grid
+          wrap="nowrap"
+          container
+          justifyContent="center"
+          style={{ paddingTop: "40px" }}
+        >
           <Box>
             <img
               style={{ width: "80px" }}
@@ -175,26 +199,47 @@ const DashboardQuotasPerCoach = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <box>
-            <Typography variant="body1">Back</Typography>
-          </box>
-          <Button variant="contained">Add Chart</Button>
+        <Grid
+          style={{ marginTop: "15px" }}
+          container
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Box>
+            <Grid
+              style={{ marginTop: "0px" }}
+              container
+              justifyContent="space-between"
+              alignItems="center"
+              className={classes.createAccountContainer}
+            >
+              <RouterLink
+                to="/"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <box className={classes.backArrow}>
+                  <ArrowBackIcon></ArrowBackIcon>
+                  <Typography variant="body1">Back</Typography>
+                </box>
+              </RouterLink>
+            </Grid>
+          </Box>
+          <Button variant="contained">+ Add Chart</Button>
         </Grid>
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>

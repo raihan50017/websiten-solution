@@ -19,8 +19,11 @@ const styles = makeStyles((theme) => ({
     },
   },
   bannerContainer: {
-    padding: "80px 20px",
+    padding: "160px 20px",
     backgroundColor: "#6A737BD9",
+    // backgroundColor: "#000000",
+    // backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    // color: "white",
   },
   bannerItem: {
     display: "flex",
@@ -35,15 +38,27 @@ const styles = makeStyles((theme) => ({
     alignItems: "center",
   },
   digitalScalability: {
-    padding: "40px 0px",
+    padding: "40px 20px",
   },
   partnershipSectionLeft: {
     backgroundColor: "#6A737BD9",
-    padding: "20px 40px",
+    // backgroundColor: "#000000",
+    // backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    // color: "white",
+    padding: "120px 40px",
     textAlign: "center",
   },
   whatMakesHeading: {
     padding: "40px 0px",
+  },
+  youtube: {
+    transition: "all .3s ease",
+    width: "50%",
+    marginBottom: "40px",
+    boxShadow: "2px 2px 4px 4px rgba(0,0,0,.2)",
+    "&:hover": {
+      boxShadow: "2px 2px 4px 4px rgba(0,0,0,.3)",
+    },
   },
 }));
 
@@ -53,12 +68,21 @@ const AboutUs = () => {
   return (
     <div>
       <Header></Header>
+      <Box m={5}></Box>
       <Box container className={classes.platformBanner}>
         <Box className={classes.platform} container>
           <Box className={classes.bannerContainer} md={6}>
             <Box className={classes.bannerItem}>
-              <img alt="" src="../../images/file.svg"></img>
-              <Typography variantMapping={{ p: "p" }} variant="p">
+              <img
+                alt=""
+                style={{ width: "60px", marginRight: "8px" }}
+                src="../../images/file.svg"
+              ></img>
+              <Typography
+                align="center"
+                variantMapping={{ p: "p" }}
+                variant="h6"
+              >
                 Digitize your documents with the FliMoDi Platform. Use the
                 unique platform to connect people and technology through digital
                 workflows.
@@ -119,16 +143,15 @@ const AboutUs = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Box style={{ width: "50%" }}>
+          <Box className={classes.youtube} style={{ width: "50%" }}>
             <YouTube
               onReady={(event) => event.target.pauseVideo()}
               opts={{
-                playerVars: { autoplay: 1 },
+                playerVars: { autoplay: 0 },
                 width: "100%",
               }}
               videoId="090SqsRCbaI"
             />
-            ;
           </Box>
         </Grid>
       </Box>

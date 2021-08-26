@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { Link as RouterLink } from "react-router-dom";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -28,15 +29,13 @@ const styles = makeStyles((theme) => ({
   },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    marginTop: "25px",
-    padding: "10px 10px",
-    position: "fixed",
-    bottom: "0",
-    width: "100%",
+    padding: "20px 40px",
+    marginTop: "90px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
   linechartContainer: {
@@ -44,9 +43,13 @@ const styles = makeStyles((theme) => ({
     backgroundColor: "#6A737B4F",
   },
   card: {
-    width: "50%",
+    width: "60%",
     textAlign: "center",
-    marginLeft: "auto",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+    marginBottom: "20px",
     border: "1px solid rgba(0,0,0,.1)",
     height: "100%",
     padding: "20px 15px",
@@ -104,7 +107,7 @@ const TutorService = () => {
       </Box>
       <Box>
         <Typography
-          style={{ textAlign: "center", fontSize: "16px", fontWeight: "400" }}
+          style={{ textAlign: "center", fontSize: "18px", fontWeight: "400" }}
           variantMapping={{ p: "p" }}
           variant="p"
         >
@@ -113,8 +116,8 @@ const TutorService = () => {
       </Box>
       <Box className={classes.container}>
         <Grid container>
-          <Grid md={6}>
-            <Box className={classes.card}>
+          <Grid xs={12} md={6}>
+            <Box style={{ marginLeft: "auto" }} className={classes.card}>
               <img
                 style={{ height: "50px" }}
                 sty
@@ -128,11 +131,8 @@ const TutorService = () => {
               <Button variant="contained">Add</Button>
             </Box>
           </Grid>
-          <Grid md={6}>
-            <Box
-              style={{ marginRight: "auto", marginLeft: "0" }}
-              className={classes.card}
-            >
+          <Grid xs={12} md={6}>
+            <Box className={classes.card}>
               <img
                 style={{ height: "50px" }}
                 sty
@@ -147,32 +147,34 @@ const TutorService = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid
-          style={{ marginTop: "50px" }}
-          container
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <box className={classes.backArrow}>
-            <ArrowBackIcon></ArrowBackIcon>
-            <Typography variant="body1">Back</Typography>
-          </box>
-          
-        </Grid>
+        <Box style={{ marginTop: "30px" }}>
+          <RouterLink
+            to="/"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+          >
+            <box className={classes.backArrow}>
+              <ArrowBackIcon></ArrowBackIcon>
+              <Typography variant="body1">Back</Typography>
+            </box>
+          </RouterLink>
+        </Box>
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>

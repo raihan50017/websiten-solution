@@ -28,6 +28,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { Link as RouterLink } from "react-router-dom";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -47,14 +48,13 @@ const styles = makeStyles((theme) => ({
   },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    marginTop: "25px",
-    padding: "10px 10px",
-    bottom: "0",
-    width: "100%",
+    padding: "20px 40px",
+    marginTop: "90px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
 
@@ -411,31 +411,34 @@ const ChangePaymentInfo = () => {
           </Grid>
         </Box>
 
-        <Grid
-          style={{ marginTop: "50px" }}
-          container
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <box className={classes.backArrow}>
-            <ArrowBackIcon></ArrowBackIcon>
-            <Typography variant="body1">Back</Typography>
-          </box>
-        </Grid>
+        <Box style={{ marginTop: "30px" }}>
+          <RouterLink
+            to="/"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+          >
+            <box className={classes.backArrow}>
+              <ArrowBackIcon></ArrowBackIcon>
+              <Typography variant="body1">Back</Typography>
+            </box>
+          </RouterLink>
+        </Box>
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>

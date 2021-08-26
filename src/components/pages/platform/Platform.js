@@ -7,7 +7,7 @@ import Footer from "../../shared/footer/Footer";
 const styles = makeStyles((theme) => ({
   platformBanner: {},
   bannerLeft: {
-    padding: "40px 20px",
+    padding: "120px 30px",
     border: "1px solid gray",
     "& ul": {
       listStyleType: "none",
@@ -19,8 +19,11 @@ const styles = makeStyles((theme) => ({
     },
   },
   bannerRight: {
-    padding: "40px 20px",
+    padding: "120px 20px",
     backgroundColor: "#6A737BD9",
+    // backgroundColor: "#000000",
+    // backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    // color: "white",
   },
   bannerRightItem: {
     display: "flex",
@@ -35,15 +38,27 @@ const styles = makeStyles((theme) => ({
     alignItems: "center",
   },
   digitalScalability: {
-    padding: "40px 0px",
+    padding: "40px 20px",
   },
   partnershipSectionLeft: {
     backgroundColor: "#6A737BD9",
-    padding: "20px 40px",
+    // backgroundColor: "#000000",
+    // backgroundImage: "linear-gradient(315deg, #000000 0%, #414141 74%)",
+    // color: "white",
+    padding: "120px 40px",
     textAlign: "center",
   },
   whatMakesHeading: {
     padding: "40px 0px",
+  },
+  youtube: {
+    transition: "all .3s ease",
+    width: "50%",
+    marginBottom: "40px",
+    boxShadow: "2px 2px 4px 4px rgba(0,0,0,.2)",
+    "&:hover": {
+      boxShadow: "2px 2px 4px 4px rgba(0,0,0,.3)",
+    },
   },
 }));
 
@@ -53,9 +68,10 @@ const Platform = () => {
   return (
     <div>
       <Header></Header>
+      <Box m={5}></Box>
       <Box container className={classes.platformBanner}>
         <Grid className={classes.platform} container>
-          <Grid className={classes.bannerLeft} md={6}>
+          <Grid xs={12} className={classes.bannerLeft} md={6}>
             <Typography variantMapping={{ ul: "ul" }} variant="ul">
               <Typography variantMapping={{ li: "li" }} variant="li">
                 Platform overview
@@ -74,9 +90,13 @@ const Platform = () => {
               </Typography>
             </Typography>
           </Grid>
-          <Grid className={classes.bannerRight} md={6}>
+          <Grid xs={12} className={classes.bannerRight} md={6}>
             <Box className={classes.bannerRightItem}>
-              <img alt="" src="../../images/file.svg"></img>
+              <img
+                style={{ height: "60px" }}
+                alt=""
+                src="../../images/file.svg"
+              ></img>
               <Typography variantMapping={{ p: "p" }} variant="p">
                 Digitize your documents with the FliMoDi Platform. Use the
                 unique platform to connect people and technology through digital
@@ -85,7 +105,7 @@ const Platform = () => {
             </Box>
             <Box className={classes.bannerRightItem}>
               <img
-                style={{ width: "50px" }}
+                style={{ width: "60px" }}
                 alt=""
                 src="../../images/clapping.svg"
               ></img>
@@ -149,16 +169,15 @@ const Platform = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Box style={{ width: "50%" }}>
+          <Box className={classes.youtube} style={{ width: "50%" }}>
             <YouTube
               onReady={(event) => event.target.pauseVideo()}
               opts={{
-                playerVars: { autoplay: 1 },
+                playerVars: { autoplay: 0 },
                 width: "100%",
               }}
               videoId="090SqsRCbaI"
             />
-            ;
           </Box>
         </Grid>
       </Box>

@@ -24,6 +24,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Link as RouterLink } from "react-router-dom";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -41,17 +42,24 @@ const styles = makeStyles((theme) => ({
     padding: "20px 30px",
     color: "#6A737B",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    marginTop: "25px",
-    padding: "10px 10px",
-    bottom: "0",
-    position: "fixed",
-    width: "100%",
+    padding: "20px 40px",
+    marginTop: "130px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
 
@@ -136,7 +144,7 @@ const ReportTraining = () => {
           <Grid xs={4}>
             <Box>
               <Typography style={{ textAlign: "center" }} variant="h5">
-                Change password
+                Report Training
               </Typography>
             </Box>
           </Grid>
@@ -155,6 +163,7 @@ const ReportTraining = () => {
                   borderRadius: "5px",
                   cursor: "pointer",
                   verticalAlign: "middle",
+                  paddingRight: "10px",
                 }}
               >
                 Account Dtails{" "}
@@ -279,6 +288,7 @@ const ReportTraining = () => {
                 role={undefined}
                 transition
                 disablePortal
+                style={{ zIndex: "999" }}
               >
                 {({ TransitionProps, placement }) => (
                   <Grow
@@ -319,7 +329,7 @@ const ReportTraining = () => {
           <Grid
             container
             direction="row"
-            justifyContent="flex-start"
+            justifyContent="flex-end"
             alignItems="center"
             className={classes.padding10}
             style={{ marginTop: "40px" }}
@@ -330,30 +340,36 @@ const ReportTraining = () => {
           </Grid>
         </Box>
         <Grid
-          style={{ marginTop: "50px" }}
+          style={{ marginTop: "0px" }}
           container
           justifyContent="space-between"
           alignItems="center"
+          className={classes.createAccountContainer}
         >
-          <box className={classes.backArrow}>
-            <ArrowBackIcon></ArrowBackIcon>
-            <Typography variant="body1">Back</Typography>
-          </box>
+          <RouterLink
+            to="/"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <box className={classes.backArrow}>
+              <ArrowBackIcon></ArrowBackIcon>
+              <Typography variant="body1">Back</Typography>
+            </box>
+          </RouterLink>
         </Grid>
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>

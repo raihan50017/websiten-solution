@@ -25,6 +25,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Link as RouterLink } from "react-router-dom";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -44,17 +45,15 @@ const styles = makeStyles((theme) => ({
   },
   bottomFooter: {
     backgroundColor: "#6A737BD9",
-    marginTop: "25px",
-    padding: "10px 10px",
-    bottom: "0",
-    width: "100%",
+    padding: "20px 40px",
+    marginTop: "120px",
     "& p": {
-      fontWeight: "400",
+      fontWeight: "500",
       fontSize: "16px",
-      textAlign: "center",
+      textAlign: "left",
+      padding: "5px",
     },
   },
-
   backArrow: {
     display: "flex",
     alignItems: "center",
@@ -121,7 +120,10 @@ const CloseAccount = () => {
           <Grid xs={4}></Grid>
           <Grid xs={4}>
             <Box>
-              <Typography style={{ textAlign: "center" }} variant="h5">
+              <Typography
+                style={{ textAlign: "center", paddingLeft: "10px" }}
+                variant="h5"
+              >
                 Delete account
               </Typography>
             </Box>
@@ -233,7 +235,7 @@ const CloseAccount = () => {
         <Box className={classes.padding10}>
           <Box
             className={classes.padding10}
-            style={{ border: "1px dotted red" }}
+            style={{ border: "1px dotted red", padding: "20px" }}
           >
             <Grid container direction="row" wrap="nowrap">
               <Box>
@@ -281,31 +283,34 @@ const CloseAccount = () => {
             close my account
           </Button>
         </Grid>
-        <Grid
-          style={{ marginTop: "50px" }}
-          container
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <box className={classes.backArrow}>
-            <ArrowBackIcon></ArrowBackIcon>
-            <Typography variant="body1">Back</Typography>
-          </box>
-        </Grid>
+        <Box style={{ marginTop: "30px" }}>
+          <RouterLink
+            to="/confirm-delete"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+          >
+            <box className={classes.backArrow}>
+              <ArrowBackIcon></ArrowBackIcon>
+              <Typography variant="body1">Back</Typography>
+            </box>
+          </RouterLink>
+        </Box>
       </Box>
       <Box className={classes.bottomFooter}>
         <Grid container>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Made byKmitk Gmbh
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Kreantivitat Koph
             </Typography>
           </Grid>
-          <Grid md={4}>
+          <Grid xs={12} md={4}>
             <Typography variantMapping={{ p: "p" }} variant="p">
               Tel. +41 79 699 71 72 Email: xxx@xxx.ch
             </Typography>
