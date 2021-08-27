@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./../components/training/header/Header";
+import Header from "./trainingShared/header/Header";
 import {
   Box,
   Button,
@@ -8,8 +8,10 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import Footer from "./training/footer/Footer";
+import Footer from "./trainingShared/footer/Footer";
 import { useDropzone } from "react-dropzone";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const trainings = [
   {
@@ -40,6 +42,15 @@ const styles = makeStyles((theme) => ({
   back: {
     textAlign: "center",
     fontWeight: "700",
+  },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
   },
   selection: {
     textAlign: "center",
@@ -111,18 +122,29 @@ const LeadershipView1 = () => {
 
   return (
     <div>
-      <Header></Header>
+      <Header title="Leadership Module view 1"></Header>
       <Box className={classes.view1}>
         <Grid container className={classes.viewContainer}>
           <Grid className={classes.back} md={1}>
             <Box className={classes.backHeading}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                --back
-              </Typography>
+              <Box style={{ margin: "30px" }}>
+                <RouterLink
+                  to="/select-training"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  <box className={classes.backArrow}>
+                    <ArrowBackIcon></ArrowBackIcon>
+                    <Typography variant="body1">Back</Typography>
+                  </box>
+                </RouterLink>
+              </Box>
             </Box>
           </Grid>
 
-          <Grid className={classes.selection} md={7}>
+          <Grid xs={12} className={classes.selection} md={7}>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 className={classes.textSelection}
@@ -145,8 +167,8 @@ const LeadershipView1 = () => {
             </form>
           </Grid>
 
-          <Grid className={classes.dragDrop} md={4}>
-            <section className="container">
+          <Grid xs={12} className={classes.dragDrop} md={4}>
+            <section style={{ padding: "40px" }} className="container">
               <div className={classes.dropzone}>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} />
@@ -170,27 +192,36 @@ const LeadershipView1 = () => {
           </aside>
         </Box>
 
-        <Grid container>
-          <Grid className={classes.message} md={10}>
+        <Grid container alignItems="center">
+          <Grid xs={12} className={classes.message} md={10}>
             <Box>
               <Grid container>
-                <Grid md={8}>
-                  <span>
-                    <img
-                      style={{ width: "30px" }}
-                      alt=""
-                      src="../../images/Training/communication.png"
-                    ></img>
-                  </span>
-                  <span style={{ fontWeight: "700" }}>
-                    send task to students
-                  </span>
+                <Grid alignItems="center" md={8}>
+                  <Grid container alignItems="center">
+                    <span>
+                      <img
+                        style={{ width: "50px", verticalAlign: "center" }}
+                        alt=""
+                        src="../../images/Training/communication.png"
+                      ></img>
+                    </span>
+                    <span
+                      style={{
+                        fontWeight: "700",
+                        paddingLeft: "10px",
+                        paddingRight: "10px",
+                      }}
+                    >
+                      send task to students
+                    </span>
+                  </Grid>
                 </Grid>
                 <Grid md={4}>
                   <span>
                     <Button
                       className={classes.messageButton}
                       variant="outlined"
+                      style={{ marginLeft: "14px" }}
                     >
                       send message
                     </Button>
@@ -200,9 +231,13 @@ const LeadershipView1 = () => {
             </Box>
           </Grid>
 
-          <Grid className={classes.update} md={2}>
+          <Grid xs={12} className={classes.update} md={2}>
             <section className="container">
-              <Button className={classes.updateButton} variant="outlined">
+              <Button
+                style={{ margin: "14px" }}
+                className={classes.updateButton}
+                variant="outlined"
+              >
                 update
               </Button>
             </section>

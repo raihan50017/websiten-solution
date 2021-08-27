@@ -34,7 +34,10 @@ const styles = makeStyles((theme) => ({
   },
   youtube: {
     transition: "all .3s ease",
-    width: "50%",
+    width: "60%",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
     marginBottom: "40px",
     boxShadow: "2px 2px 4px 4px rgba(0,0,0,.2)",
     "&:hover": {

@@ -17,6 +17,19 @@ import DeleteAccount from "./components/pages/delete/DeleteAccount";
 import ConfirmDelete from "./components/pages/delete/ConfirmDelete";
 import CloseAccount from "./components/pages/delete/CloseAccount";
 import ReportTraining from "./components/pages/reportTraining/ReportTraining";
+import SelectTraininng from "./components/pages/training/SelectTraining";
+import LeaderShipView1 from "./components/pages/training/LeadershipView1";
+import LeadershipView1 from "./components/pages/training/LeadershipView1";
+import LeadershipView2 from "./components/pages/training/LeaderShipView2";
+import CreateNewModule from "./components/pages/training/CreateNewModule";
+import SendMessage from "./components/pages/training/SendMessage";
+import RegistrationStu from "./components/pages/training/RegistrationStu";
+import OverView from "./components/pages/training/OverView";
+import TrainingsansichtStudent from "./components/pages/training/TrainingsansichtStudent";
+import AnsichtStudent from "./components/pages/training/AnsichtStudent";
+import LeadershipTraining from "./components/pages/training/LeadershipTraining";
+import SalesTraining from "./components/pages/training/SalesTraining";
+import CommunicationsTraining from "./components/pages/training/CommunicationsTraining";
 
 function App() {
   return (
@@ -75,6 +88,42 @@ function App() {
         </Route>
         <Route exact path="/report-training">
           <ReportTraining></ReportTraining>
+        </Route>
+        <Route exact path="/select-training">
+          <SelectTraininng></SelectTraininng>
+        </Route>
+        <Route exact path="/leadership-view1">
+          <LeadershipView1></LeadershipView1>
+        </Route>
+        <Route exact path="/leadership-view2">
+          <LeadershipView2></LeadershipView2>
+        </Route>
+        <Route exact path="/create-module">
+          <CreateNewModule></CreateNewModule>
+        </Route>
+        <Route exact path="/send-message">
+          <SendMessage></SendMessage>
+        </Route>
+        <Route exact path="/registration-student">
+          <RegistrationStu></RegistrationStu>
+        </Route>
+        <Route exact path="/overview-training">
+          <OverView></OverView>
+        </Route>
+        <Route exact path="/trainingsansicht">
+          <TrainingsansichtStudent></TrainingsansichtStudent>
+        </Route>
+        <Route exact path="/ansicht-student">
+          <AnsichtStudent></AnsichtStudent>
+        </Route>
+        <Route exact path="/leadership-training">
+          <LeadershipTraining></LeadershipTraining>
+        </Route>
+        <Route exact path="/sales-training">
+          <SalesTraining></SalesTraining>
+        </Route>
+        <Route exact path="/communications-training">
+          <CommunicationsTraining></CommunicationsTraining>
         </Route>
       </Router>
     </div>

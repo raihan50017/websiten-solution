@@ -1,7 +1,9 @@
 import React from "react";
-import Header from "./../components/training/header/Header";
+import Header from "./trainingShared/header/Header";
 import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
-import Footer from "./training/footer/Footer";
+import Footer from "./trainingShared/footer/Footer";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = makeStyles((theme) => ({
   cardContainer: {
@@ -12,6 +14,8 @@ const styles = makeStyles((theme) => ({
     textAlign: "center",
     lineHeight: "55px",
     padding: "10px 30px",
+    border: "1px solid gray",
+    marginBottom: "20px",
   },
   userIcon: {
     textAlign: "center",
@@ -30,11 +34,21 @@ const styles = makeStyles((theme) => ({
     color: "gray",
     margin: "10px",
   },
-   button: {
-      backgroundColor: "#F39200",
-      color: "#fff",
-      textTransform: "lowercase",
-      padding: "10px 50px",
+  button: {
+    backgroundColor: "#F39200",
+    color: "#fff",
+    textTransform: "lowercase",
+    padding: "10px 50px",
+  },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "white",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
   },
 }));
 
@@ -43,10 +57,25 @@ const SelectTraining = () => {
 
   return (
     <div>
-      <Header></Header>
+      <Header title="Select training"></Header>
+      <Box style={{ padding: "30px", backgroundColor: "white" }}>
+        <RouterLink
+          to="/"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            display: "inline-block",
+          }}
+        >
+          <box className={classes.backArrow}>
+            <ArrowBackIcon></ArrowBackIcon>
+            <Typography variant="body1">Back</Typography>
+          </box>
+        </RouterLink>
+      </Box>
       <Box>
         <Grid container className={classes.cardContainer}>
-          <Grid className={classes.card} md={3}>
+          <Grid xs={12} className={classes.card} md={3}>
             <Box className={classes.userIcon}>
               <img
                 style={{ width: "60px" }}
@@ -65,11 +94,13 @@ const SelectTraining = () => {
               </Typography>
             </Box>
             <Box>
-              <Button className={classes.button} variant="contained">excute</Button>
+              <Button className={classes.button} variant="contained">
+                excute
+              </Button>
             </Box>
           </Grid>
 
-          <Grid className={classes.card} md={3}>
+          <Grid xs={12} className={classes.card} md={3}>
             <Box className={classes.userIcon}>
               <img
                 style={{ width: "60px" }}
@@ -88,11 +119,13 @@ const SelectTraining = () => {
               </Typography>
             </Box>
             <Box>
-              <Button className={classes.button} variant="contained">excute</Button>
+              <Button className={classes.button} variant="contained">
+                excute
+              </Button>
             </Box>
           </Grid>
 
-          <Grid className={classes.card} md={3}>
+          <Grid xs={12} className={classes.card} md={3}>
             <Box className={classes.userIcon}>
               <img
                 style={{ width: "60px" }}
@@ -102,7 +135,7 @@ const SelectTraining = () => {
             </Box>
             <Box className={classes.cardHeading}>
               <Typography variantMapping={{ p: "p" }} variant="p">
-                Leadership-training
+                Sales Training
               </Typography>
             </Box>
             <Box className={classes.cardDescription}>
@@ -112,11 +145,12 @@ const SelectTraining = () => {
               </Typography>
             </Box>
             <Box>
-              <Button className={classes.button} variant="contained">excute</Button>
+              <Button className={classes.button} variant="contained">
+                excute
+              </Button>
             </Box>
           </Grid>
-
-          <Grid className={classes.card} md={3}>
+          <Grid xs={12} className={classes.card} md={3}>
             <Box className={classes.userIcon}>
               <img
                 style={{ width: "60px" }}
@@ -135,9 +169,106 @@ const SelectTraining = () => {
               </Typography>
             </Box>
             <Box>
-              <Button className={classes.button} variant="contained">add</Button>
+              <Button className={classes.button} variant="contained">
+                add
+              </Button>
             </Box>
           </Grid>
+        </Grid>
+      </Box>
+      <Box>
+        <Typography style={{ padding: "10px" }} align="center" variant="h6">
+          Related Pages
+        </Typography>
+        <Grid style={{ padding: "20px" }} wrap="wrap" justifyContent="center">
+          <RouterLink
+            to="/leadership-view1"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Leadership1
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/leadership-view2"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Leadership2
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/create-module"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Create Module
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/send-message"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Send Message
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/registration-student"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Registration Student
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/overview-training"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Overview Training
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/trainingsansicht"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Trainingsansicht
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/ansicht-student"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Ansicht Student
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/leadership-training"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Leadership Training
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/sales-training"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Sales Training
+            </Button>
+          </RouterLink>
+          <RouterLink
+            to="/communications-training"
+            style={{ margin: "10px", color: "inherit", textDecoration: "none" }}
+          >
+            <Button variant="contained" color="primary">
+              Communications Training
+            </Button>
+          </RouterLink>
         </Grid>
       </Box>
       <Footer></Footer>

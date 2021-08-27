@@ -10,7 +10,6 @@ import {
 } from "@material-ui/core";
 import Footer from "./trainingShared/footer/Footer";
 import { useDropzone } from "react-dropzone";
-import MUIEditor, { MUIEditorState } from "react-mui-draft-wysiwyg";
 import { Link as RouterLink } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
@@ -38,7 +37,20 @@ const styles = makeStyles((theme) => ({
     backgroundColor: "#fff",
   },
   viewContainer: {
-    padding: "10px 0px",
+    padding: "70px 0px",
+  },
+  back: {
+    textAlign: "center",
+    fontWeight: "700",
+  },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
   },
   selection: {
     textAlign: "center",
@@ -46,11 +58,9 @@ const styles = makeStyles((theme) => ({
   },
   textSelection: {
     width: "90%",
-    margin: "10px 0",
   },
   dragDrop: {
-    marginTop: "50px",
-    padding: "10px",
+    padding: "0 20px",
   },
   dropzone: {
     border: "1px dashed gray",
@@ -75,35 +85,26 @@ const styles = makeStyles((theme) => ({
   taskStudent: {
     padding: "30px",
   },
-  back: {
-    fontWeight: "700",
-    padding: "20px",
+  message: {
+    padding: "40px 50px",
+    border: "1px solid #ede9e8",
   },
-  save: {
-    paddingLeft: "90px",
-  },
-  saveButton: {
+  messageButton: {
     backgroundColor: "#F39200",
-    padding: "5px 40px",
+    padding: "10px 30px",
     textTransform: "lowercase",
   },
-  editor: {
-    margin: "50px",
-    padding: "10px",
-    border: "1px solid gray",
+  update: {
+    paddingTop: "70px",
   },
-  backArrow: {
-    display: "flex",
-    alignItems: "center",
-    "& .MuiSvgIcon-root": {
-      marginRight: "5px",
-      color: "#083C6B",
-      fontSize: "20px",
-    },
+  updateButton: {
+    backgroundColor: "#F39200",
+    paddingLeft: "10px 30px",
+    textTransform: "lowercase",
   },
 }));
 
-const CreateNewModule = () => {
+const LeadershipView2 = () => {
   const classes = styles();
   const [currency, setCurrency] = React.useState("EUR");
 
@@ -118,47 +119,38 @@ const CreateNewModule = () => {
       {file.path} - {file.size} bytes
     </li>
   ));
-  const [editorState, setEditorState] = React.useState(
-    MUIEditorState.createEmpty()
-  );
-  const onChange = (newState) => {
-    setEditorState(newState);
-  };
 
   return (
     <div>
-      <Header title="Create new module"></Header>
+      <Header title="Leadership Module view 2"></Header>
       <Box className={classes.view1}>
-        <Grid
-          alignItems="flex-start"
-          container
-          className={classes.viewContainer}
-        >
-          <Grid xs={12} className={classes.selection} md={8}>
+        <Grid container className={classes.viewContainer}>
+          <Grid className={classes.back} md={1}>
+            <Box className={classes.backHeading}>
+              <Box style={{ margin: "30px" }}>
+                <RouterLink
+                  to="/select-training"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  <box className={classes.backArrow}>
+                    <ArrowBackIcon></ArrowBackIcon>
+                    <Typography variant="body1">Back</Typography>
+                  </box>
+                </RouterLink>
+              </Box>
+            </Box>
+          </Grid>
+
+          <Grid xs={12} className={classes.selection} md={7}>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 className={classes.textSelection}
                 id="outlined-select-currency-native"
                 select
-                label="training"
-                value={currency}
-                onChange={handleChange}
-                SelectProps={{
-                  native: true,
-                }}
-                variant="outlined"
-              >
-                {trainings.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-              <TextField
-                className={classes.textSelection}
-                id="outlined-select-currency-native"
-                select
-                label="title"
+                label="part"
                 value={currency}
                 onChange={handleChange}
                 SelectProps={{
@@ -173,14 +165,10 @@ const CreateNewModule = () => {
                 ))}
               </TextField>
             </form>
-            <Box className={classes.editor}>
-              <p style={{ textAlign: "left" }}>content</p>
-              <MUIEditor editorState={editorState} onChange={onChange} />
-            </Box>
           </Grid>
 
           <Grid xs={12} className={classes.dragDrop} md={4}>
-            <section className="container">
+            <section style={{ padding: "40px" }} className="container">
               <div className={classes.dropzone}>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} />
@@ -197,40 +185,68 @@ const CreateNewModule = () => {
             </section>
           </Grid>
         </Grid>
+        <Box>
+          <aside className={classes.files}>
+            <h4 className={classes.fileName}>existing files</h4>
+            <ul className={classes.elementFile}>{files}</ul>
+          </aside>
+        </Box>
 
-        <Grid container>
-          <Grid xs={12} className={classes.back} md={10}></Grid>
+        <Grid container alignItems="center">
+          <Grid xs={12} className={classes.message} md={10}>
+            <Box>
+              <Grid container>
+                <Grid alignItems="center" md={8}>
+                  <Grid container alignItems="center">
+                    <span>
+                      <img
+                        style={{ width: "50px", verticalAlign: "center" }}
+                        alt=""
+                        src="../../images/Training/communication.png"
+                      ></img>
+                    </span>
+                    <span
+                      style={{
+                        fontWeight: "700",
+                        paddingLeft: "10px",
+                        paddingRight: "10px",
+                      }}
+                    >
+                      send task to students
+                    </span>
+                  </Grid>
+                </Grid>
+                <Grid md={4}>
+                  <span>
+                    <Button
+                      className={classes.messageButton}
+                      variant="outlined"
+                      style={{ marginLeft: "14px" }}
+                    >
+                      send message
+                    </Button>
+                  </span>
+                </Grid>
+              </Grid>
+            </Box>
+          </Grid>
 
-          <Grid xs={12} className={classes.save} md={2}>
+          <Grid xs={12} className={classes.update} md={2}>
             <section className="container">
               <Button
-                style={{ marginBottom: "20px" }}
-                className={classes.saveButton}
+                style={{ margin: "14px" }}
+                className={classes.updateButton}
                 variant="outlined"
               >
-                save
+                update
               </Button>
             </section>
           </Grid>
         </Grid>
-        <Box style={{ margin: "30px" }}>
-          <RouterLink
-            to="/select-training"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            <box className={classes.backArrow}>
-              <ArrowBackIcon></ArrowBackIcon>
-              <Typography variant="body1">Back</Typography>
-            </box>
-          </RouterLink>
-        </Box>
       </Box>
       <Footer></Footer>
     </div>
   );
 };
 
-export default CreateNewModule;
+export default LeadershipView2;

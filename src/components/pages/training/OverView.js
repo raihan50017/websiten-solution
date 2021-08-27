@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./../components/training/header/Header";
+import Header from "./trainingShared/header/Header";
 import {
   Box,
   Button,
@@ -8,13 +8,15 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import Footer from "./training/footer/Footer";
+import Footer from "./trainingShared/footer/Footer";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const trainings = [
-    {
-        value: "ongoing",
-        label: "Ongoing__",
-      },
+  {
+    value: "ongoing",
+    label: "Ongoing__",
+  },
   {
     value: "sales",
     label: "Sales-training",
@@ -32,40 +34,37 @@ const trainings = [
 const styles = makeStyles((theme) => ({
   cardContainer: {
     width: "100%",
-    padding: "70px 40px",
+    padding: "70px 180px",
+    [theme.breakpoints.down("md")]: {
+      padding: "70px 40px",
+    },
     backgroundColor: "#fff",
   },
   cardBack: {
-      fontWeight: "700",
+    fontWeight: "700",
   },
   salesTraining: {
-      paddingBottom: "40px",
-      textAlign: "left",
+    paddingBottom: "40px",
+    textAlign: "left",
   },
   title: {
     fontWeight: "700",
     paddingTop: "35px",
   },
-
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-  form: {
-    width: "70%",
-    margin: "auto",
-    padding: "60px",
-  },
   textSelection: {
-    width: "80%",
+    width: "100%",
   },
   card: {
     textAlign: "center",
     lineHeight: "55px",
     border: "1px solid #f0ebeb",
-    margin: "30px 250px",
+    marginTop: "15px",
+    width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+    marginRight: "auto",
+    marginLeft: "auto",
   },
   userIcon: {
     textAlign: "center",
@@ -90,6 +89,15 @@ const styles = makeStyles((theme) => ({
     textTransform: "lowercase",
     padding: "10px 50px",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
 }));
 
 const OverView = () => {
@@ -102,65 +110,88 @@ const OverView = () => {
 
   return (
     <div>
-      <Header></Header>
+      <Header title="Overview trainings"></Header>
       <Box>
         <Grid className={classes.cardContainer}>
           <Grid container>
-            <Grid className={classes.cardBack} md={3}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                --back
-              </Typography>
+            <Grid xs={12} className={classes.cardBack} md={3}>
+              <Box>
+                <RouterLink
+                  to="/select-training"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "inline-block",
+                  }}
+                >
+                  <box className={classes.backArrow}>
+                    <ArrowBackIcon></ArrowBackIcon>
+                    <Typography variant="body1">Back</Typography>
+                  </box>
+                </RouterLink>
+              </Box>
             </Grid>
           </Grid>
 
-          <Grid className={classes.form}>
-            <Grid className={classes.salesTraining} md={9}>
-              <span variantMapping={{ p: "p" }} variant="p">
-              each students has a progress view that lists their workouts, modules and content 
+          <Grid container>
+            <Grid xs={12} className={classes.salesTraining} md={12}>
+              <span
+                style={{ fontSize: "18px" }}
+                variantMapping={{ p: "p" }}
+                variant="p"
+              >
+                each students has a progress view that lists their workouts,
+                modules and content
               </span>
             </Grid>
-            <form className={classes.root} noValidate autoComplete="off">
-              <span style={{fontWeight: "700"}}>training</span>
-              <TextField
-                className={classes.textSelection}
-                id="outlined-select-currency-native"
-                select
-                value={currency}
-                onChange={handleChange}
-                SelectProps={{
-                  native: true,
-                }}
-                variant="outlined"
-              >
-                {trainings.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </form>
-            <Grid className={classes.card}>
-              <Box className={classes.userIcon}>
-                <img
-                  style={{ width: "60px" }}
-                  alt=""
-                  src="../../images/Training/leadership.png"
-                ></img>
-              </Box>
-              <Box className={classes.cardHeading}>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  leadership-training
-                </Typography>
-              </Box>
-              <Box className={classes.cardDescription}>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  record goal from module
-                </Typography>
-              </Box>
-              <Box>
-                <Button className={classes.button} variant="contained">
-                  module
-                </Button>
+            <Grid xs={12}>
+              <form className={classes.root} noValidate autoComplete="off">
+                <span style={{ fontSize: "18px", paddingRight: "10px" }}>
+                  training
+                </span>
+                <TextField
+                  className={classes.textSelection}
+                  id="outlined-select-currency-native"
+                  select
+                  value={currency}
+                  onChange={handleChange}
+                  SelectProps={{
+                    native: true,
+                  }}
+                  variant="outlined"
+                >
+                  {trainings.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </TextField>
+              </form>
+            </Grid>
+            <Grid xs={12}>
+              <Box xs={12} className={classes.card}>
+                <Box className={classes.userIcon}>
+                  <img
+                    style={{ width: "60px" }}
+                    alt=""
+                    src="../../images/Training/leadership.png"
+                  ></img>
+                </Box>
+                <Box className={classes.cardHeading}>
+                  <Typography variantMapping={{ p: "p" }} variant="p">
+                    leadership-training
+                  </Typography>
+                </Box>
+                <Box className={classes.cardDescription}>
+                  <Typography variantMapping={{ p: "p" }} variant="p">
+                    record goal from module
+                  </Typography>
+                </Box>
+                <Box>
+                  <Button className={classes.button} variant="contained">
+                    module
+                  </Button>
+                </Box>
               </Box>
             </Grid>
           </Grid>

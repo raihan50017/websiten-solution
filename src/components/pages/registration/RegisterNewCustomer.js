@@ -135,6 +135,7 @@ const RegisterNewCustomer = () => {
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
+                // wrap="nowrap"
               >
                 <Box className={classes.iconContainer}>
                   <img
@@ -144,7 +145,7 @@ const RegisterNewCustomer = () => {
                   ></img>
                 </Box>
                 <Typography
-                  style={{ fontWeight: "400", fontSize: "18px" }}
+                  style={{ fontWeight: "400", fontSize: "16px" }}
                   variantMapping={{ p: "p" }}
                   variant="p"
                 >
@@ -182,6 +183,7 @@ const RegisterNewCustomer = () => {
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
+                // wrap="nowrap"
               >
                 <Box className={classes.iconContainer}>
                   <img
@@ -191,7 +193,7 @@ const RegisterNewCustomer = () => {
                   ></img>
                 </Box>
                 <Typography
-                  style={{ fontWeight: "400", fontSize: "18px" }}
+                  style={{ fontWeight: "400", fontSize: "16px", padding:"10px" }}
                   variantMapping={{ p: "p" }}
                   variant="p"
                 >
@@ -201,7 +203,7 @@ const RegisterNewCustomer = () => {
                   to="/student-registration"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <Button style={{ marginRight: "15px" }} variant="contained">
+                  <Button style={{ margin: "15px" }} variant="contained">
                     Student
                   </Button>
                 </RouterLink>

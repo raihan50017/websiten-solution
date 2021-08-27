@@ -30,8 +30,8 @@ const styles = makeStyles((theme) => ({
   container: {
     paddingTop: "30px",
     paddingBottom: "30px",
-    paddingLeft: "20%",
-    paddingRight: "20%",
+    paddingLeft: "5%",
+    paddingRight: "5%",
   },
   topHeading: {
     padding: "20px 30px",
@@ -140,15 +140,17 @@ const ReportTraining = () => {
           alignItems="center"
           className={classes.topHeading}
         >
-          <Grid xs={4}></Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <Box>
-              <Typography style={{ textAlign: "center" }} variant="h5">
+              <Typography
+                style={{ textAlign: "right", marginRight: "20px" }}
+                variant="h5"
+              >
                 Report Training
               </Typography>
             </Box>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <div style={{ marginRight: "auto", display: "inline-block" }}>
               <Typography
                 variantMapping={{ p: "p" }}
@@ -273,6 +275,7 @@ const ReportTraining = () => {
                 style={{
                   margin: "12px 30px",
                   border: "1px solid gray",
+                  borderRadius: "5px",
                   padding: "8px 10px",
                   cursor: "pointer",
                 }}

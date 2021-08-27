@@ -114,7 +114,7 @@ const Registration = () => {
       </Box>
       <Box>
         <Grid container className={classes.loginOrRegistrationFormContainer}>
-          <Grid className={classes.login} md={6}>
+          <Grid xs={12} className={classes.login} md={6}>
             <Box className={classes.userIcon}>
               <img
                 style={{ width: "60px" }}
@@ -156,7 +156,7 @@ const Registration = () => {
               </Grid>
             </Box>
           </Grid>
-          <Grid className={classes.newRegistration} md={6}>
+          <Grid xs={12} className={classes.newRegistration} md={6}>
             <Box className={classes.userIcon}>
               <img
                 style={{ width: "60px" }}
@@ -196,8 +196,9 @@ const Registration = () => {
             </Box>
           </Grid>
         </Grid>
+      </Box>
+      <Box style={{ margin: "40px" }}>
         <Grid
-          style={{ margin: "40px" }}
           container
           justifyContent="space-between"
           alignItems="center"

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./training/header/Header";
+import Header from "./trainingShared/header/Header";
 import {
   Box,
   Button,
@@ -8,9 +8,11 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import Footer from "./training/footer/Footer";
+import Footer from "./trainingShared/footer/Footer";
 import { useDropzone } from "react-dropzone";
 import MUIEditor, { MUIEditorState } from "react-mui-draft-wysiwyg";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const trainings = [
   {
@@ -48,6 +50,9 @@ const styles = makeStyles((theme) => ({
   },
   dragDrop: {
     marginTop: "50px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10px",
+    },
     paddingRight: "10px",
   },
   dropzone: {
@@ -83,6 +88,15 @@ const styles = makeStyles((theme) => ({
     padding: "10px",
     border: "1px solid gray",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
 }));
 
 const SendMessage = () => {
@@ -109,10 +123,10 @@ const SendMessage = () => {
 
   return (
     <div>
-      <Header></Header>
+      <Header title="Send message"></Header>
       <Box className={classes.view1}>
         <Grid container className={classes.viewContainer}>
-          <Grid className={classes.selection} md={8}>
+          <Grid xs={12} className={classes.selection} md={8}>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
                 className={classes.textSelection}
@@ -145,7 +159,7 @@ const SendMessage = () => {
             </Box>
           </Grid>
 
-          <Grid className={classes.dragDrop} md={4}>
+          <Grid xs={12} className={classes.dragDrop} md={4}>
             <section className="container">
               <div className={classes.dropzone}>
                 <div {...getRootProps({ className: "dropzone" })}>
@@ -163,7 +177,22 @@ const SendMessage = () => {
             </section>
           </Grid>
         </Grid>
-        <Box className={classes.back}>--back</Box>
+        <Box className={classes.back}>
+          <Box style={{ margin: "30px" }}>
+            <RouterLink
+              to="/select-training"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <box className={classes.backArrow}>
+                <ArrowBackIcon></ArrowBackIcon>
+                <Typography variant="body1">Back</Typography>
+              </box>
+            </RouterLink>
+          </Box>
+        </Box>
       </Box>
       <Footer></Footer>
     </div>

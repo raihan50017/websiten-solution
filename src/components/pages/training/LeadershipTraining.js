@@ -1,7 +1,9 @@
 import React from "react";
-import Header from "./../components/training/header/Header";
+import Header from "./trainingShared/header/Header";
 import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
-import Footer from "./training/footer/Footer";
+import Footer from "./trainingShared/footer/Footer";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = makeStyles((theme) => ({
   cardContainer: {
@@ -12,6 +14,7 @@ const styles = makeStyles((theme) => ({
     textAlign: "center",
     lineHeight: "55px",
     padding: "10px 30px",
+    marginBottom: "20px",
   },
   userIcon: {
     textAlign: "center",
@@ -35,6 +38,15 @@ const styles = makeStyles((theme) => ({
     textTransform: "lowercase",
     padding: "10px 50px",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
 }));
 
 const LeadershipTraining = () => {
@@ -42,33 +54,57 @@ const LeadershipTraining = () => {
 
   return (
     <div>
-      <Header></Header>
+      <Header title="Modules of the trainings"></Header>
       <Box>
         <Grid className={classes.cardContainer}>
           <Grid container>
-            <Grid className={classes.cardBack} md={5}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                --back
-              </Typography>
+            <Grid xs={12}>
+              <Box>
+                <RouterLink
+                  to="/select-training"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "inline-block",
+                  }}
+                >
+                  <box className={classes.backArrow}>
+                    <ArrowBackIcon></ArrowBackIcon>
+                    <Typography variant="body1">Back</Typography>
+                  </box>
+                </RouterLink>
+              </Box>
             </Grid>
-            <Grid className={classes.salesTraining} md={7}>
+            <Grid className={classes.salesTraining} xs={12}>
+              <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+                direction="row"
+                wrap="nowrap"
+              >
                 <img
-                  style={{ width: "60px" }}
+                  style={{ width: "110px", padding: "10px" }}
                   alt=""
-                  src="../../images/user.svg"
+                  src="../../images/classlecture.svg"
                 ></img>
-              <span className={classes.cardHeading} variantMapping={{ p: "p" }} variant="p">
-                Leadership-training
-              </span>
+                <span
+                  className={classes.cardHeading}
+                  variantMapping={{ p: "p" }}
+                  variant="p"
+                >
+                  Leadership-training
+                </span>
+              </Grid>
             </Grid>
           </Grid>
           <Grid container>
-            <Grid className={classes.card} md={4}>
+            <Grid xs={12} className={classes.card} md={4}>
               <Box className={classes.userIcon}>
                 <img
                   style={{ width: "60px" }}
                   alt=""
-                  src="../../images/user.svg"
+                  src="../../images/sharing.svg"
                 ></img>
               </Box>
               <Box className={classes.cardHeading}>
@@ -88,12 +124,12 @@ const LeadershipTraining = () => {
               </Box>
             </Grid>
 
-            <Grid className={classes.card} md={4}>
+            <Grid xs={12} className={classes.card} md={4}>
               <Box className={classes.userIcon}>
                 <img
                   style={{ width: "60px" }}
                   alt=""
-                  src="../../images/user.svg"
+                  src="../../images/sharing.svg"
                 ></img>
               </Box>
               <Box className={classes.cardHeading}>
@@ -113,12 +149,12 @@ const LeadershipTraining = () => {
               </Box>
             </Grid>
 
-            <Grid className={classes.card} md={4}>
+            <Grid xs={12} className={classes.card} md={4}>
               <Box className={classes.userIcon}>
                 <img
                   style={{ width: "60px" }}
                   alt=""
-                  src="../../images/user.svg"
+                  src="../../images/plus.svg"
                 ></img>
               </Box>
               <Box className={classes.cardHeading}>

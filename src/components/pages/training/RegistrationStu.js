@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./../components/training/header/Header";
+import Header from "./trainingShared/header/Header";
 import {
   Box,
   Button,
@@ -8,7 +8,9 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import Footer from "./training/footer/Footer";
+import Footer from "./trainingShared/footer/Footer";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const trainings = [
   {
@@ -26,42 +28,27 @@ const trainings = [
 ];
 
 const styles = makeStyles((theme) => ({
-  cardContainer: {
+  sectionContainer: {
+    backgroundColor: "white",
+    padding: "40px 30px",
+    [theme.breakpoints.up("md")]: {
+      padding: "40px 150px",
+    },
+  },
+
+  formControl: {
     width: "100%",
-    padding: "70px 40px",
-    backgroundColor: "#fff",
+    margin: "10px",
   },
   cardBack: {
-      fontWeight: "700",
+    fontWeight: "700",
   },
   salesTraining: {
-      paddingBottom: "10px",
+    paddingBottom: "10px",
   },
   title: {
     fontWeight: "700",
     paddingTop: "35px",
-  },
-
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-  form: {
-    width: "70%",
-    margin: "auto",
-    textAlign: "right",
-    padding: "60px",
-  },
-  textField: {
-    width: "39%",
-  },
-  textEmail: {
-    width: "80%",
-  },
-  textSelection: {
-    width: "80%",
   },
   formCancelButton: {
     backgroundColor: "#fff",
@@ -78,6 +65,15 @@ const styles = makeStyles((theme) => ({
     padding: "10px 30px",
     borderRadius: "5px",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
 }));
 
 const RegistrationStu = () => {
@@ -90,72 +86,89 @@ const RegistrationStu = () => {
 
   return (
     <div>
-      <Header></Header>
-      <Box>
-        <Grid className={classes.cardContainer}>
-          <Grid container>
-            <Grid className={classes.cardBack} md={3}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                --back
-              </Typography>
-            </Grid>
+      <Header title="Registration student"></Header>
+      <Box className={classes.sectionContainer}>
+        <Typography align="center" variant="h6">
+          {" "}
+          log in for your assigned training
+        </Typography>
+        <Grid container>
+          <Grid xs={12} md={6}>
+            <TextField
+              className={classes.formControl}
+              id="outlined-basic"
+              label="First Name"
+              variant="outlined"
+            />
           </Grid>
-
-          <Grid className={classes.form}>
-            <Grid className={classes.salesTraining} md={9}>
-              <span variantMapping={{ p: "p" }} variant="p">
-                log in for your assigned training
-              </span>
-            </Grid>
-            <form className={classes.root} noValidate autoComplete="off">
-              <TextField
-                className={classes.textField}
-                id="outlined-basic"
-                label="First Name"
-                variant="outlined"
-              />
-              <TextField
-                className={classes.textField}
-                id="outlined-basic"
-                label="Last Name"
-                variant="outlined"
-              />
-              <br></br>
-              <TextField
-                className={classes.textEmail}
-                id="outlined-basic"
-                label="Email"
-                variant="outlined"
-              />
-              <br></br>
-              <TextField
-                className={classes.textSelection}
-                id="outlined-select-currency-native"
-                select
-                label="selection_"
-                value={currency}
-                onChange={handleChange}
-                SelectProps={{
-                  native: true,
-                }}
-                variant="outlined"
-              >
-                {trainings.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-              <Button className={classes.formCancelButton} variant="outlined">
-                cancel
-              </Button>
-              <Button className={classes.formSaveButton} variant="outlined">
-                save
-              </Button>
-            </form>
+          <Grid xs={12} md={6}>
+            <TextField
+              className={classes.formControl}
+              id="outlined-basic"
+              label="Last Name"
+              variant="outlined"
+            />
+          </Grid>
+          <Grid xs={12} md={12}>
+            <TextField
+              className={classes.formControl}
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+            />
+          </Grid>
+          <Grid xs={12} md={12}>
+            <TextField
+              className={classes.formControl}
+              id="outlined-select-currency-native"
+              select
+              label="selection_"
+              value={currency}
+              onChange={handleChange}
+              SelectProps={{
+                native: true,
+              }}
+              variant="outlined"
+            >
+              {trainings.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </TextField>
           </Grid>
         </Grid>
+        <Button
+          style={{ margin: "10px" }}
+          className={classes.formCancelButton}
+          variant="outlined"
+        >
+          cancel
+        </Button>
+        <Button
+          style={{ margin: "10px" }}
+          className={classes.formSaveButton}
+          variant="outlined"
+        >
+          save
+        </Button>
+        <Box style={{ margin: "10px" }}>
+          <RouterLink
+            to="/select-training"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+              display: "inline-block",
+            }}
+          >
+            <box className={classes.backArrow}>
+              <ArrowBackIcon></ArrowBackIcon>
+              <Typography variant="body1">Back</Typography>
+            </box>
+          </RouterLink>
+        </Box>
       </Box>
+      <Box style={{ height: "80px" }}></Box>
       <Footer></Footer>
     </div>
   );

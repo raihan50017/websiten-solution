@@ -478,6 +478,14 @@ export default function Header(props) {
                 </RouterLink>
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
+                <RouterLink
+                  style={{ border: "none", padding: "0" }}
+                  to="/select-training"
+                >
+                  Select Training
+                </RouterLink>
+              </Typography>
+              <Typography variantMapping={{ a: "a" }} variant="a">
                 Our Partners
               </Typography>
               <Typography variantMapping={{ a: "a" }} variant="a">
@@ -572,9 +580,9 @@ export default function Header(props) {
         </Drawer>
         <div
           style={{
-            marginLeft: "auto",
             display: "flex",
             alignItems: "center",
+            justifyContent: "flex-end",
           }}
         >
           <div className={search}>
@@ -663,6 +671,32 @@ export default function Header(props) {
                             textDecoration: "none",
                             color: "inherit",
                           }}
+                          to="/platform"
+                        >
+                          Platform
+                        </RouterLink>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <RouterLink
+                          style={{
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
+                          to="/about-us"
+                        >
+                          About Us
+                        </RouterLink>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <RouterLink
+                          style={{
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
                           to="/registration"
                         >
                           Registration
@@ -683,7 +717,6 @@ export default function Header(props) {
                           </RouterLink>
                         </Typography>
                       </MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
@@ -712,14 +745,18 @@ export default function Header(props) {
             role={undefined}
             transition
             disablePortal
-            style={{ zIndex: "999", width: "100%", padding: "10px" }}
+            style={{
+              zIndex: "999",
+              width: "100%",
+              padding: "10px",
+            }}
           >
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
                 style={{
                   transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom",
+                    placement === "bottom" ? "center bottom" : "center bottom",
                 }}
               >
                 <Paper>
@@ -920,7 +957,19 @@ export default function Header(props) {
                           About Us
                         </RouterLink>
                       </MenuItem>
-                      <MenuItem onClick={handleClose3}>Profile</MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <RouterLink
+                          style={{
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
+                          to="/select-training"
+                        >
+                          Select Training
+                        </RouterLink>
+                      </MenuItem>
                       <MenuItem onClick={handleClose3}>My account</MenuItem>
                       <MenuItem onClick={handleClose3}>Logout</MenuItem>
                     </MenuList>

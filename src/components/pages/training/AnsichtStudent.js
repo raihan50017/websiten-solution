@@ -10,7 +10,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import MailIcon from "@material-ui/icons/Mail";
-import Footer from "./training/footer/Footer";
+import Footer from "./trainingShared/footer/Footer";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = makeStyles((theme) => ({
   cardContainer: {
@@ -30,25 +32,16 @@ const styles = makeStyles((theme) => ({
     paddingTop: "35px",
   },
 
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-  form: {
-    width: "70%",
-    margin: "auto",
-    padding: "60px",
-  },
-  textSelection: {
-    width: "80%",
-  },
   card: {
     textAlign: "center",
     lineHeight: "55px",
     border: "1px solid #f0ebeb",
-    margin: "30px 250px",
+    width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+    marginRight: "auto",
+    marginLeft: "auto",
   },
   userIcon: {
     textAlign: "center",
@@ -73,6 +66,15 @@ const styles = makeStyles((theme) => ({
     textTransform: "lowercase",
     padding: "10px 50px",
   },
+  backArrow: {
+    display: "flex",
+    alignItems: "center",
+    "& .MuiSvgIcon-root": {
+      marginRight: "5px",
+      color: "#083C6B",
+      fontSize: "20px",
+    },
+  },
 }));
 
 const defaultProps = {
@@ -84,59 +86,81 @@ const AnsichtStudent = () => {
 
   return (
     <div>
-      <Header></Header>
+      <Header title="Ansicht Student"></Header>
       <Box>
-        <Grid className={classes.cardContainer}>
+        <Box className={classes.cardContainer}>
           <Grid container>
-            <Grid className={classes.cardBack} md={3}>
-              <Typography variantMapping={{ p: "p" }} variant="p">
-                --Zurück
-              </Typography>
+            <Grid className={classes.cardBack} xs={12}>
+              <Box>
+                <RouterLink
+                  to="/select-training"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "inline-block",
+                  }}
+                >
+                  <box className={classes.backArrow}>
+                    <ArrowBackIcon></ArrowBackIcon>
+                    <Typography variant="body1">Back</Typography>
+                  </box>
+                </RouterLink>
+              </Box>
             </Grid>
           </Grid>
 
-          <Grid className={classes.form}>
-            <Grid className={classes.salesTraining} md={9}>
-              <span variantMapping={{ p: "p" }} variant="p">
-              meine Trainings,  meine Module und sämtliche Inhalte zu den Trainings. 
-              </span>
-            </Grid>
-            
-            <Grid className={classes.card}>
-              
-              <Box  className={classes.userIcon}>
-              <Badge
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
+          <Grid container>
+            <Grid className={classes.salesTraining} xs={12}>
+              <Typography
+                style={{
+                  fontSize: "18px",
+                  padding: "20px",
+                  textAlign: "center",
                 }}
-                badgeContent={1}
-                {...defaultProps}
-              />
-                <img
-                  style={{ width: "60px" }}
-                  alt=""
-                  src="../../images/Training/training.png"
-                ></img>
-              </Box>
-              <Box className={classes.cardHeading}>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  training
-                </Typography>
-              </Box>
-              <Box className={classes.cardDescription}>
-                <Typography variantMapping={{ p: "p" }} variant="p">
-                  Führungskurs Beschreibung
-                </Typography>
-              </Box>
-              <Box>
-                <Button className={classes.button} variant="contained">
-                  Ausführen
-                </Button>
+                variantMapping={{ p: "p" }}
+                variant="p"
+              >
+                meine Trainings, meine Module und sämtliche Inhalte zu den
+                Trainings.
+              </Typography>
+            </Grid>
+
+            <Grid xs={12}>
+              <Box className={classes.card}>
+                <Box className={classes.userIcon}>
+                  <Badge
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    badgeContent={1}
+                    {...defaultProps}
+                  />
+                  <img
+                    style={{ width: "60px" }}
+                    alt=""
+                    src="../../images/Training/training.png"
+                  ></img>
+                </Box>
+                <Box className={classes.cardHeading}>
+                  <Typography variantMapping={{ p: "p" }} variant="p">
+                    training
+                  </Typography>
+                </Box>
+                <Box className={classes.cardDescription}>
+                  <Typography variantMapping={{ p: "p" }} variant="p">
+                    Führungskurs Beschreibung
+                  </Typography>
+                </Box>
+                <Box>
+                  <Button className={classes.button} variant="contained">
+                    Ausführen
+                  </Button>
+                </Box>
               </Box>
             </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </Box>
       <Footer></Footer>
     </div>

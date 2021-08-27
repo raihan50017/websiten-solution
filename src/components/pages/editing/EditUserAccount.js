@@ -149,15 +149,17 @@ const EditUserAccount = () => {
           alignItems="center"
           className={classes.topHeading}
         >
-          <Grid xs={4}></Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <Box>
-              <Typography style={{ textAlign: "center" }} variant="h5">
+              <Typography
+                style={{ textAlign: "right", marginRight: "20px" }}
+                variant="h5"
+              >
                 Edit user account
               </Typography>
             </Box>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <div style={{ marginRight: "auto", display: "inline-block" }}>
               <Typography
                 variantMapping={{ p: "p" }}

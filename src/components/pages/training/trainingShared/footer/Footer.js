@@ -14,11 +14,10 @@ const styles = makeStyles((theme) => ({
     background: "#F39200",
     padding: "20px",
     color: "#fff",
+    textAlign: "center",
   },
   footerName: {},
-  footerContact: {
-    textAlign: "right",
-  },
+  footerContact: {},
 }));
 
 const Footer = () => {
@@ -27,12 +26,12 @@ const Footer = () => {
   return (
     <Box className={classes.footer}>
       <Grid container>
-        <Grid className={classes.footerName} md={6}>
+        <Grid xs={12} className={classes.footerName} md={6}>
           <Typography variantMapping={{ p: "p" }} variant="p">
             made by KmitK GmbH
           </Typography>
         </Grid>
-        <Grid className={classes.footerContact} md={6}>
+        <Grid xs={12} className={classes.footerContact} md={6}>
           <Typography variantMapping={{ p: "p" }} variant="p">
             Tel. +41 43 211 34 25 Email: info@mikefruet.ch
           </Typography>

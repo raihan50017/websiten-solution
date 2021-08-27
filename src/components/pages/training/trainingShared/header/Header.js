@@ -1,188 +1,182 @@
-import React, { useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import IconButton from "@material-ui/core/IconButton";
-import { Box, makeStyles } from "@material-ui/core";
+import {
+  Box,
+  Grid,
+  Typography,
+  makeStyles,
+  TextField,
+  Button,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Select,
+  Popper,
+  Grow,
+  Paper,
+  ClickAwayListener,
+  MenuList,
+  withStyles,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
+import React, { useState } from "react";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import EditIcon from "@material-ui/icons/Edit";
+import RefreshIcon from "@material-ui/icons/Refresh";
+import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Link as RouterLink } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  // desktop: {
-  //   [theme.breakpoints.down("md")]: {
-  //     display: "none",
-  //   },
-  // },
-  grow: {
-    flexGrow: 1,
-  },
-  mainNav: {
-    position: "relative",
-    color: "black",
-    minHeight: "90px",
-    borderBottom: "1px solid gray",
+const styles = makeStyles((theme) => ({
+  topHeading: {
+    padding: "10px 10px",
   },
   logo: {
-    marginRight: "20px",
-  },
-  dropIconButton: {
-    padding: "5px",
-    "&:hover": {
-      backgroundColor: "inherit",
-    },
-  },
-  navMenu: {
-    transition: "all .5s ease",
-    border:"1px solid gray",
-    borderRadius: "5px",
-  },
-  navItem: {
-    display: "inline-block",
-    color: "gray",
-    "&:hover": {
-      color: "#009fdb",
-    },
-  },
-  navLink: {
-    padding: "14px 16px",
-    fontSize: "17px",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    transition: "all .2s linear",
-  },
-  dropDown: {
-    position: "relative",
-    "&:hover": {
-      "& .dropdown-content": {
-        display: "block",
-      },
-    },
-  },
-  dropDownContent: {
-    display: "none",
-    position: "absolute",
-    backgroundColor: "#f9f9f9",
-    minWidth: "240px",
-    boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-    zIndex: "1",
     [theme.breakpoints.down("md")]: {
-      position: "relative",
-    },
-    "& a": {
-      float: "none",
-      color: "black",
-      padding: "12px 16px",
-      textDecoration: "none",
-      fontSize: "17px",
-      display: "block",
-      textAlign: "left",
-      cursor: "pointer",
-      transition: "all .3s ease",
-      borderTop: "1px solid #eaeaea",
-      "&:hover": {
-        backgroundColor: "#ddd",
-        color: "black",
-      },
+      textAlign: "center",
+      marginBottom: "13px",
+      borderBottom: "1px solid white",
     },
   },
 }));
 
-function ElevationScroll(props) {
-  const { children, window } = props;
+const Header = ({ title }) => {
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
 
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 88,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-    style: {
-      backgroundColor: trigger ? "white" : "white",
-      transition: "all .3s ease",
-    },
-  });
-}
-
-ElevationScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  window: PropTypes.func,
-};
-
-const Header = (props) => {
-  const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  useEffect(() => {
-    const setResponsiveness = () => {
-      return window.innerWidth < 960 ? setOpen(false) : setOpen(true);
-    };
-    setResponsiveness();
-  }, []);
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
 
-  const {
-    grow,
-    mainNav,
-    dropIconButton,
-    navLink,
-    navItem,
-    dropDown,
-    dropDownContent,
-    menuButton,
-    navMenu,
-    logo,
-    desktop,
-  } = useStyles();
+    setOpen(false);
+  };
+
+  const StyledMenuItem = withStyles((theme) => ({
+    root: {
+      "&:focus": {
+        backgroundColor: theme.palette.primary.main,
+        "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+          color: theme.palette.common.white,
+        },
+      },
+    },
+  }))(MenuItem);
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  const classes = styles();
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <ElevationScroll {...props}>
-        <AppBar className={desktop}>
-          <Toolbar className={mainNav}>
+    <div>
+      <Box>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          className={classes.topHeading}
+        >
+          <Grid xs={12} md={4} className={classes.logo}>
             <img
-              style={{ width: "170px", padding: "0px 10px" }}
+              style={{ width: "100px" }}
               alt=""
               src="../../images/Training/logo.png"
             ></img>
-            <div style={{marginLeft:"auto", display:"flex", alignItems:"center"}} >
-            <Box className={navMenu}>
-              <Box className={`${navItem} ${dropDown}`}>
-                <Typography
-                  className={navLink}
-                  variantMapping={{ a: "a" }}
-                  variant="a"
-                >
-                  account details
-                  <IconButton className={dropIconButton} color="inherit">
-                    <ExpandMoreIcon></ExpandMoreIcon>
-                  </IconButton>
-                </Typography>
-                <Box className={`${dropDownContent} dropdown-content`}>
-                  <Typography variantMapping={{ a: "a" }} variant="a">
-                    Banking Solution
-                  </Typography>
-                  <Typography variantMapping={{ a: "a" }} variant="a">
-                    Mobile App Development
-                  </Typography>
-                  <Typography variantMapping={{ a: "a" }} variant="a">
-                    E-commerce Solution
-                  </Typography>
-                </Box>
-              </Box>
+          </Grid>
+          <Grid xs={6} md={4}>
+            <Box>
+              <Typography
+                style={{ textAlign: "center", marginRight: "20px" }}
+                variant="h5"
+              >
+                {title}
+              </Typography>
             </Box>
+          </Grid>
+          <Grid xs={6} md={4}>
+            <div>
+              <Typography
+                variantMapping={{ p: "p" }}
+                variant="p"
+                ref={anchorRef}
+                aria-controls={open ? "menu-list-grow" : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+                style={{
+                  border: "1px solid gray",
+                  padding: "12px 14px",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  verticalAlign: "middle",
+                  display: "inline-block",
+                }}
+              >
+                Account Dtails{" "}
+                <ExpandMoreIcon
+                  style={{ verticalAlign: "middle" }}
+                ></ExpandMoreIcon>
+              </Typography>
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                transition
+                disablePortal
+                style={{ zIndex: "999" }}
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === "bottom" ? "center top" : "center bottom",
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClose}>
+                        <MenuList
+                          autoFocusItem={open}
+                          id="menu-list-grow"
+                          onKeyDown={handleListKeyDown}
+                        >
+                          <StyledMenuItem>
+                            <ListItemIcon>
+                              <EditIcon fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary="edit account details" />
+                          </StyledMenuItem>
+                          <StyledMenuItem>
+                            <ListItemIcon>
+                              <RefreshIcon fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary="Show activities" />
+                          </StyledMenuItem>
+                          <StyledMenuItem>
+                            <ListItemIcon>
+                              <DeleteIcon fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary="delete account" />
+                          </StyledMenuItem>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
             </div>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-      <Toolbar />
-    </React.Fragment>
+          </Grid>
+        </Grid>
+      </Box>
+    </div>
   );
 };
 

@@ -127,15 +127,17 @@ const ChangePaymentInfo = () => {
           alignItems="center"
           className={classes.topHeading}
         >
-          <Grid xs={4}></Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <Box>
-              <Typography style={{ textAlign: "center" }} variant="h5">
-                Edit user account
+              <Typography
+                style={{ textAlign: "right", marginRight: "20px" }}
+                variant="h5"
+              >
+                Payment
               </Typography>
             </Box>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <div style={{ marginRight: "auto", display: "inline-block" }}>
               <Typography
                 variantMapping={{ p: "p" }}
@@ -217,7 +219,7 @@ const ChangePaymentInfo = () => {
           className={classes.pageHeading}
         >
           <Box>
-            <Typography variant="h4">first and last name of tutor</Typography>
+            <Typography variant="h4">Change payment information</Typography>
           </Box>
         </Grid>
       </Box>

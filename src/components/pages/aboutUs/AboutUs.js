@@ -26,12 +26,11 @@ const styles = makeStyles((theme) => ({
     // color: "white",
   },
   bannerItem: {
-    display: "flex",
-    alignItems: "center",
+    textAlign: "left",
     "& p": {
       fontSize: "16px",
       fontWeignt: "400",
-      padding: "14px 14px",
+      textAlign: "justify",
     },
   },
   presentation: {
@@ -53,7 +52,10 @@ const styles = makeStyles((theme) => ({
   },
   youtube: {
     transition: "all .3s ease",
-    width: "50%",
+    width: "60%",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
     marginBottom: "40px",
     boxShadow: "2px 2px 4px 4px rgba(0,0,0,.2)",
     "&:hover": {
@@ -75,11 +77,11 @@ const AboutUs = () => {
             <Box className={classes.bannerItem}>
               <img
                 alt=""
-                style={{ width: "60px", marginRight: "8px" }}
+                style={{ width: "100px" }}
                 src="../../images/file.svg"
               ></img>
               <Typography
-                align="center"
+                style={{ paddingLeft: "15px" }}
                 variantMapping={{ p: "p" }}
                 variant="h6"
               >
@@ -143,7 +145,7 @@ const AboutUs = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Box className={classes.youtube} style={{ width: "50%" }}>
+          <Box className={classes.youtube}>
             <YouTube
               onReady={(event) => event.target.pauseVideo()}
               opts={{

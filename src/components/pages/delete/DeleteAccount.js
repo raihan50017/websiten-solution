@@ -30,8 +30,8 @@ const styles = makeStyles((theme) => ({
   container: {
     paddingTop: "30px",
     paddingBottom: "30px",
-    paddingLeft: "20%",
-    paddingRight: "20%",
+    paddingLeft: "5%",
+    paddingRight: "5%",
   },
   topHeading: {
     padding: "20px 30px",
@@ -117,18 +117,17 @@ const DeleteAccount = () => {
           alignItems="center"
           className={classes.topHeading}
         >
-          <Grid xs={4}></Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <Box>
               <Typography
-                style={{ textAlign: "center", paddingLeft: "10px" }}
+                style={{ textAlign: "right", marginRight: "20px" }}
                 variant="h5"
               >
                 Delete account
               </Typography>
             </Box>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <div style={{ marginRight: "auto", display: "inline-block" }}>
               <Typography
                 variantMapping={{ p: "p" }}
