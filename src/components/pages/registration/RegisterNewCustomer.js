@@ -27,7 +27,10 @@ const styles = makeStyles((theme) => ({
     padding: "20px 20px",
   },
   createAccountContainer: {
-    padding: "20px 10%",
+    padding: "20px 5%",
+    [theme.breakpoints.down("md")]: {
+      padding: "20px 10px",
+    },
   },
   createAccountAsTutor: {
     padding: "0px 20px",
@@ -193,7 +196,11 @@ const RegisterNewCustomer = () => {
                   ></img>
                 </Box>
                 <Typography
-                  style={{ fontWeight: "400", fontSize: "16px", padding:"10px" }}
+                  style={{
+                    fontWeight: "400",
+                    fontSize: "16px",
+                    padding: "10px",
+                  }}
                   variantMapping={{ p: "p" }}
                   variant="p"
                 >
